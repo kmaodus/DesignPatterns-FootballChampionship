@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kmaodus_zadaca_1", "kmaodus_zadaca_1\kmaodus_zadaca_1.csproj", "{75649275-A7B1-4A02-B9E2-571258E67810}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kmaodus_zadaca_1", "kmaodus_zadaca_1\kmaodus_zadaca_1.csproj", "{2499C4FC-71CD-45F6-84FA-391AFC069409}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{75649275-A7B1-4A02-B9E2-571258E67810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75649275-A7B1-4A02-B9E2-571258E67810}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75649275-A7B1-4A02-B9E2-571258E67810}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75649275-A7B1-4A02-B9E2-571258E67810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2499C4FC-71CD-45F6-84FA-391AFC069409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2499C4FC-71CD-45F6-84FA-391AFC069409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2499C4FC-71CD-45F6-84FA-391AFC069409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2499C4FC-71CD-45F6-84FA-391AFC069409}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {402A1ED5-0A23-408F-B725-87F6755240F0}
+		SolutionGuid = {941059F0-3F0E-4A5E-A2EE-920F749A49B0}
 	EndGlobalSection
 EndGlobal
