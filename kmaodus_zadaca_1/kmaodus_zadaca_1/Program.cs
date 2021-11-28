@@ -38,6 +38,7 @@ namespace kmaodus_zadaca_1
             {
                 Console.WriteLine(pozicija);
             }
+            
 
             Console.ReadLine();
         }

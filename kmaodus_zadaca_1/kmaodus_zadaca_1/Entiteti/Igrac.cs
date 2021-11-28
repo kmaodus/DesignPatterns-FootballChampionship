@@ -1,9 +1,5 @@
-﻿using kmaodus_zadaca_1.Entiteti.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace kmaodus_zadaca_1.Entiteti
 {
@@ -11,13 +7,16 @@ namespace kmaodus_zadaca_1.Entiteti
     {
 
         public string ID_Klub { get; set; }
-        public List<string> Pozicija { get; set; } = new List<string>();
+        public List<string> Pozicije { get; set; } = new List<string>();
         public DateTime Roden { get; set; }
 
 
-        public Igrac()
+        public Igrac(string id_klub, string imePrezime, List<string> pozicije, DateTime roden)
         {
-
+            ID_Klub = id_klub;
+            ImePrezime = imePrezime;
+            Pozicije = pozicije;
+            Roden = roden;
         }
 
     }
