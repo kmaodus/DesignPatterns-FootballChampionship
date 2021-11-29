@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using kmaodus_zadaca_1.Alati;
 
 namespace kmaodus_zadaca_1.FactoryMethod
 {

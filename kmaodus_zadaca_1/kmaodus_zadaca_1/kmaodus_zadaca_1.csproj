@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alati\EnumExtensions.cs" />
+    <Compile Include="Alati\ParserArgumenata.cs" />
+    <Compile Include="Alati\PodaciReader.cs" />
+    <Compile Include="Alati\RegexHelper.cs" />
+    <Compile Include="Alati\Zapisnik.cs" />
     <Compile Include="Entiteti\Enums\PozicijeIgraca.cs" />
     <Compile Include="Entiteti\Enums\VrstaPrvenstva.cs" />
     <Compile Include="Entiteti\Igrac.cs" />
@@ -52,8 +57,11 @@
     <Compile Include="Entiteti\SastaviUtakmica.cs" />
     <Compile Include="Entiteti\Trener.cs" />
     <Compile Include="Entiteti\Utakmice.cs" />
+    <Compile Include="FactoryMethod\IgracLoader.cs" />
+    <Compile Include="FactoryMethod\PodaciLoaderBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton\PodaciManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -63,9 +71,6 @@
     <None Include="TestneDatoteke\DZ1_sastavi_utakmica.csv" />
     <None Include="TestneDatoteke\DZ1_utakmice.csv" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FactoryMethod\" />
-    <Folder Include="Singleton\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
