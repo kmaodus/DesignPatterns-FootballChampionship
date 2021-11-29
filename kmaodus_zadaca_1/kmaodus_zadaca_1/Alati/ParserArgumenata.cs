@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,7 @@ namespace kmaodus_zadaca_1.Alati
         public static bool ProvjeriArgumente(string[] args)
         {
             bool ispravan = true;
-            // TODO: provjeri za konfig datoteku i za "-dt", "-dc", "-dd"
-            string[] zastavice = { "-v", "-l", "-c", "-k", "-o", "-t", "-os" };
+            string[] zastavice = { "-k", "-i", "-u", "-s", "-d" };
 
             foreach (string zastavica in zastavice)
             {
@@ -42,8 +42,7 @@ namespace kmaodus_zadaca_1.Alati
 
         public static bool ProvjeriKljučeve(Dictionary<string, string> postavke)
         {
-            string[] zastavice = { "vozila", "lokacije", "cjenik", "kapaciteti", "osobe", "vrijeme",
-                    "struktura", "aktivnosti", "tekst", "cijeli", "decimala", "dugovanje", "izlaz" };
+            string[] zastavice = { "klubovi", "igraci", "utakmice", "sastavi_utakmice", "dogadaji" };
 
             foreach (var z in zastavice)
             {
