@@ -1,11 +1,9 @@
-﻿using kmaodus_zadaca_1.Entiteti;
+﻿using kmaodus_zadaca_1.Alati;
+using kmaodus_zadaca_1.Entiteti;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
-using kmaodus_zadaca_1.Alati;
+using System.Linq;
 
 namespace kmaodus_zadaca_1.FactoryMethod
 {
@@ -15,10 +13,12 @@ namespace kmaodus_zadaca_1.FactoryMethod
 
         public override Igrac IzdvojiPodatak(string izvornaDatoteka)
         {
-            string[] podaci = izvornaDatoteka.Split(";");
-            var ID_Klub = int.Parse(podaci[0].Trim());
-            var imePrezime = float.Parse(podaci[1].Trim());
-            var pozicije = podaci[2].Trim().ToList();
+            string[] podaci = izvornaDatoteka.Split(';');
+            var ID_Klub = podaci[0].Trim();
+            var imePrezime = podaci[1].Trim();
+            var pozicije = podaci[2].ToCharArray().Select(p => p.ToString()).ToList(); //https://stackoverflow.com/questions/27978563/how-to-convert-listchar-to-liststring-in-c
+
+
             var roden = DateTime.Parse(podaci[3].Trim());
 
             return new Igrac(ID_Klub, imePrezime, pozicije, roden);
@@ -29,15 +29,15 @@ namespace kmaodus_zadaca_1.FactoryMethod
         {
             if (File.Exists(NazivDatoteke))
             {
-                Zapisnik.Ispis(Zapisnik.INFO, "=== Ucitavanje datoteke DZ_3_osobe.txt ===");
-                List<Osoba> osobe = new List<Osoba>();
+                Zapisnik.Ispis(Zapisnik.INFO, "=== Ucitavanje datoteke DZ1_igraci.csv ===");
+                List<Igrac> igrac = new List<Igrac>();
                 List<string> redoviDatoteke = PodaciReader.ProcitajDatoteku(NazivDatoteke);
 
                 foreach (string red in redoviDatoteke)
                 {
-                    if (RegexHelper.ProvjeriOsobe(red))
+                    if (RegexHelper.ProvjeriIgrac(red))
                     {
-                        osobe.Add(IzdvojiPodatak(red));
+                        igrac.Add(IzdvojiPodatak(red));
                     }
                     else
                     {
@@ -45,7 +45,7 @@ namespace kmaodus_zadaca_1.FactoryMethod
                     }
                 }
 
-                _podaci = osobe;
+                _podaci = igrac;
             }
             else
             {

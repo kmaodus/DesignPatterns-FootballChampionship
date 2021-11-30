@@ -7,8 +7,8 @@ namespace kmaodus_zadaca_1.Alati
     {
         const string KLUBOVI = @"^(\s*)[A-Za-z\u0106-\u01C4]{1,3}\s*(;)\s*([A-Za-z\u0106-\u01C4\-|\d{0,4}]+\s*)+(;)(\s*)([A-Za-z\u0106-\u01C4\-]+\s*){1,3}$";
         const string IGRAC = @"^(\s*)[A-Za-z\u0106-\u01C4]{1,2}\s*(;)\s*([A-Za-z\u0106-\u01C4\-]+\s*)+(;)(\s*)[A-Za-z\u0106-\u01C4]{1,3}\s*(;)\s*((\d{1,2}(\s*.\s*)\d{1,2}(\s*.\s*)\d{4}(\s*)\D *))$";
-        const string UTAKMICE = @"";
-        const string SASTAVI_UTAKMICA = @"";
+        const string UTAKMICE = @"^(\s*)\d{1,4}\s*(;)\s*\d{1,4}\s*(;)\s*[A-Za-z\u0106-\u01C4]{1,4}\s*(;)\s*[A-Za-z\u0106-\u01C4]{1,4}\s*(;)((\d{1,2}(\s*.\s*)\d{1,2}(\s*.\s*)\d{4}(\s*)\d{1,2}\s*:\s*\d{1,2} *))$";
+        const string SASTAVI_UTAKMICA = @"^(\s*)\d{1,4}\s*(;)\s*[A-Za-z\u0106-\u01C4]{1,4}\s*(;)\s*[A-Za-z\u0106-\u01C4]{1,4}\s*(;)([A-Za-z\u0106-\u01C4\-]+\s*)+(;)\s*[A-Za-z\u0106-\u01C4]{1,4}\s*$";
         const string DOGADAJI = @"";
         const string AKTIVNOST_1 = @"";
         const string AKTIVNOST_2 = @"^(5); *.*$";
