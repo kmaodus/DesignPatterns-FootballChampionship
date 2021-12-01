@@ -1,4 +1,5 @@
-﻿using kmaodus_zadaca_1.Entiteti;
+﻿using kmaodus_zadaca_1.Alati;
+using kmaodus_zadaca_1.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,22 +25,7 @@ namespace kmaodus_zadaca_1
 #endif
 
 
-            var igrac = new Igrac();
-            igrac.Pozicija.Add("B");
-
-            var igrac2 = new Igrac();
-            igrac2.Pozicija.Add("B");
-            igrac2.Pozicija.Add("DB");
-
-
-            Console.WriteLine(igrac.Pozicija.First().ToString());
-
-            foreach (var pozicija in igrac2.Pozicija)
-            {
-                Console.WriteLine(pozicija);
-            }
-            
-
+            //Interaktivno.GetInstance().UcitajLinije();
             Console.ReadLine();
         }
     }
