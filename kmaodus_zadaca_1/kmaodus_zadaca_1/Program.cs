@@ -28,5 +28,15 @@ namespace kmaodus_zadaca_1
             //Interaktivno.GetInstance().UcitajLinije();
             Console.ReadLine();
         }
+
+
+        private static void IzlaznaPoruka(string poruka)
+        {
+            Zapisnik.Ispis(Zapisnik.GRESKA, $"\n[GRESKA] Dogodila se greska --> \t{poruka}");
+            Zapisnik.Ispis(Zapisnik.GRESKA, $"Pritisnite bilo koju tipku za kraj rada...");
+            Console.WriteLine();
+            Console.ReadKey();
+            Environment.Exit(0);
+        }
     }
 }

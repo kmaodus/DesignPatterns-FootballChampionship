@@ -9,6 +9,8 @@ namespace kmaodus_zadaca_1.Alati
 {
     static class ParserArgumenata
     {
+        // primjer unosa -i DZ_1_igraci.csv -s DZ_1_sastavi_utakmica.csv -u DZ_1_utakmice.csv -k DZ_1_klubovi.csv -d DZ_1_dogadaji.csv
+
         public static string DohvatiArgument(IEnumerable<string> args, string opcija)
             => args.SkipWhile(i => i != opcija).Skip(1).Take(1).FirstOrDefault();
 
