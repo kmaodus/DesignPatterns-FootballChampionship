@@ -5,7 +5,6 @@ namespace kmaodus_zadaca_1.Entiteti
 {
     public class Igrac : Osoba
     {
-
         public string ID_Klub { get; set; }
         public List<string> Pozicije { get; set; } = new List<string>();
         public DateTime Roden { get; set; }

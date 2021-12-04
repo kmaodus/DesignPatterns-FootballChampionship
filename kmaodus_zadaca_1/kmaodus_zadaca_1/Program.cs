@@ -1,5 +1,7 @@
 ﻿using kmaodus_zadaca_1.Alati;
 using kmaodus_zadaca_1.Entiteti;
+using kmaodus_zadaca_1.FactoryMethod;
+using kmaodus_zadaca_1.Singleton;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +14,46 @@ namespace kmaodus_zadaca_1
     {
         static void Main(string[] args)
         {
-#if DEBUG
-            // args za debug
-            args = new[] {
-                "-v", "../../../TestneDatoteke/DZ1_dogadaji.csv",
-                "-l", "../../../TestneDatoteke/DZ1_dogadaji.csv",
-                "-c", "../../../TestneDatoteke/DZ1_dogadaji.csv",
-                "-k", "../../../TestneDatoteke/DZ1_dogadaji.csv",
-                "-o", "../../../TestneDatoteke/DZ1_dogadaji.csv",
-                "-s", "../../../TestneDatoteke/DZ1_dogadaji.csv"
-            };
-#endif
-
+            //#if DEBUG
+            //            // args za debug
+            //            args = new[] {
+            //                "-i", "../../../TestneDatoteke/DZ1_igraci.csv",
+            //                "-s", "../../../TestneDatoteke/DZ1_sastavi_utakmica.csv",
+            //                "-u", "../../../TestneDatoteke/DZ1_utakmice.csv",
+            //                "-k", "../../../TestneDatoteke/DZ1_klubovi.csv",
+            //                "-d", "../../../TestneDatoteke/DZ1_dogadaji.csv"
+            //            };
+            //#endif
 
             //Interaktivno.GetInstance().UcitajLinije();
+
+
+
+
+            //subota
+            BazaPodataka bazaPodataka = BazaPodataka.DajInstancu();
+            PodaciLoaderFactory podaciLoaderFactory = new PodaciLoaderFactory();
+
+            var loaderIgraca = podaciLoaderFactory.DohvatiIgracLoader();
+            bazaPodataka.Igraci = loaderIgraca.UcitajPodatke(@"C:\FAX\9 semestar\UzDiz\2021\zadace\UzDiz_Nogometno_Prvenstvo\kmaodus_zadaca_1\kmaodus_zadaca_1\TestneDatoteke\DZ1_igraci.csv");
+
+            var loaderKlubova = podaciLoaderFactory.DohvatiKlubLoader();
+            bazaPodataka.Klubovi = loaderKlubova.UcitajPodatke(@"C:\FAX\9 semestar\UzDiz\2021\zadace\UzDiz_Nogometno_Prvenstvo\kmaodus_zadaca_1\kmaodus_zadaca_1\TestneDatoteke\DZ1_klubovi.csv");
+
+            var loaderUtakmica = podaciLoaderFactory.DohvatiUtakmiceLoader();
+            bazaPodataka.Utakmice = loaderUtakmica.UcitajPodatke(@"C:\FAX\9 semestar\UzDiz\2021\zadace\UzDiz_Nogometno_Prvenstvo\kmaodus_zadaca_1\kmaodus_zadaca_1\TestneDatoteke\DZ1_utakmice.csv");
+
+            var loaderSastaviUtakmica = podaciLoaderFactory.DohvatiSastavUtakmicaLoader();
+            bazaPodataka.SastaviUtakmica = loaderSastaviUtakmica.UcitajPodatke(@"C:\FAX\9 semestar\UzDiz\2021\zadace\UzDiz_Nogometno_Prvenstvo\kmaodus_zadaca_1\kmaodus_zadaca_1\TestneDatoteke\DZ1_sastavi_utakmica.csv");
+
+            var loaderDogadaja = podaciLoaderFactory.DohvatiDogadajLoader();
+            bazaPodataka.Dogadaji = loaderDogadaja.UcitajPodatke(@"C:\FAX\9 semestar\UzDiz\2021\zadace\UzDiz_Nogometno_Prvenstvo\kmaodus_zadaca_1\kmaodus_zadaca_1\TestneDatoteke\DZ1_dogadaji.csv");
+
+
+            Zapisnik.Ispis(Zapisnik.INFO, $"Pritisnite bilo koju tipku za kraj rada...");
             Console.ReadLine();
         }
+
 
 
         private static void IzlaznaPoruka(string poruka)

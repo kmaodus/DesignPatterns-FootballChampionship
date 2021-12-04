@@ -48,6 +48,9 @@
     <Compile Include="Alati\PodaciReader.cs" />
     <Compile Include="Alati\RegexHelper.cs" />
     <Compile Include="Alati\Zapisnik.cs" />
+    <Compile Include="Apstrakcije\IPodaciLoader.cs" />
+    <Compile Include="Entiteti\Aktivnost.cs" />
+    <Compile Include="Entiteti\Dogadaj.cs" />
     <Compile Include="Entiteti\Enums\PozicijeIgraca.cs" />
     <Compile Include="Entiteti\Enums\VrstaPrvenstva.cs" />
     <Compile Include="Entiteti\Igrac.cs" />
@@ -57,11 +60,15 @@
     <Compile Include="Entiteti\SastaviUtakmica.cs" />
     <Compile Include="Entiteti\Trener.cs" />
     <Compile Include="Entiteti\Utakmice.cs" />
+    <Compile Include="FactoryMethod\DogadajLoader.cs" />
     <Compile Include="FactoryMethod\IgracLoader.cs" />
-    <Compile Include="FactoryMethod\PodaciLoaderBase.cs" />
+    <Compile Include="FactoryMethod\KlubLoader.cs" />
+    <Compile Include="FactoryMethod\PodaciLoaderFactory.cs" />
+    <Compile Include="FactoryMethod\SastaviUtakmicaLoader.cs" />
+    <Compile Include="FactoryMethod\UtakmicaLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Singleton\PodaciManager.cs" />
+    <Compile Include="Singleton\BazaPodataka.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

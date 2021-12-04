@@ -14,7 +14,7 @@ namespace kmaodus_zadaca_1.Entiteti
 
         public Aktivnost(string naredba)
         {
-            string[] argumenti = naredba.Split(' ').First();
+            //string[] argumenti = naredba.Split(' ').First();
 
             try
             {
