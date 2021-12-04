@@ -2,10 +2,7 @@
 {
     public class PodaciLoaderFactory
     {
-        public PodaciLoaderFactory()
-        {
-
-        }
+        public PodaciLoaderFactory() { }
 
         public IgracLoader DohvatiIgracLoader()
         {
