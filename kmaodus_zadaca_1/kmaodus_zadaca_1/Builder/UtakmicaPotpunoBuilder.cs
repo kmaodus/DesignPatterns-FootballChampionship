@@ -38,6 +38,18 @@ namespace kmaodus_zadaca_1.Builder
                 }
             }
 
+
+            // dogadaji
+            foreach (var zapis in bazaPodataka.Dogadaji)
+            {
+                if (zapis.Broj == utakmicaPotpuno.Utakmica.Broj)
+                {
+                    utakmicaPotpuno.Dogadaji.Add(zapis);
+                }
+            }
+
+
+
             return null;
         }
 

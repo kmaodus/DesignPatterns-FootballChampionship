@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kmaodus_zadaca_1.Entiteti.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,9 +25,59 @@ namespace kmaodus_zadaca_1.Entiteti
         public UtakmicaPotpuno() { }
 
 
-        public void DohvatiBrojGolovaDomacina() { }
-        public void DohvatiBrojGolovaGosta() { }
-        public void DohvatiBrojZutihKartonaDomacina() { }
-        public void DohvatiBrojZutihKartonaGosta() { }
+        public void DohvatiBrojGolovaDomacina()
+        {
+            int ukupanBrojGolova = 0;
+            foreach (var dogadaj in Dogadaji)
+            {
+                if (dogadaj.Klub == Utakmica.ID_Domacin && dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_Igre || dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_KaznenogUdarca)
+                {
+                    ukupanBrojGolova++;
+                }
+
+                if (dogadaj.Klub == Utakmica.ID_Gost && dogadaj.Vrsta == (int)OznakeDogadaja.Autogol)
+                {
+                    ukupanBrojGolova++;
+                }
+            }
+        }
+        public void DohvatiBrojGolovaGosta()
+        {
+            int ukupanBrojGolova = 0;
+            foreach (var dogadaj in Dogadaji)
+            {
+                if (dogadaj.Klub == Utakmica.ID_Gost && dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_Igre || dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_KaznenogUdarca)
+                {
+                    ukupanBrojGolova++;
+                }
+
+                if (dogadaj.Klub == Utakmica.ID_Domacin && dogadaj.Vrsta == (int)OznakeDogadaja.Autogol)
+                {
+                    ukupanBrojGolova++;
+                }
+            }
+        }
+        public void DohvatiBrojZutihKartonaDomacina()
+        {
+            int ukupanBrojZutihKartonaDomacina = 0;
+            foreach (var dogadaj in Dogadaji)
+            {
+                if (dogadaj.Klub == Utakmica.ID_Domacin && dogadaj.Vrsta == (int)OznakeDogadaja.ZutiKarton)
+                {
+                    ukupanBrojZutihKartonaDomacina++;
+                }
+            }
+        }
+        public void DohvatiBrojZutihKartonaGosta() 
+        {
+            int ukupanBrojZutihKartonaGosta = 0;
+            foreach (var dogadaj in Dogadaji)
+            {
+                if (dogadaj.Klub == Utakmica.ID_Gost && dogadaj.Vrsta == (int)OznakeDogadaja.ZutiKarton)
+                {
+                    ukupanBrojZutihKartonaGosta++;
+                }
+            }
+        }
     }
 }

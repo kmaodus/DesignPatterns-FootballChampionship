@@ -61,4 +61,5 @@ namespace kmaodus_zadaca_1.Entiteti.Enums
         [Description("DN")]
         DesniNapadac = 19,
     }
+
 }

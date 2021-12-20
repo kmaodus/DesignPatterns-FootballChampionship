@@ -14,25 +14,26 @@ namespace kmaodus_zadaca_1
     {
         static void Main(string[] args)
         {
-            //#if DEBUG
-            //            // args za debug
-            //            args = new[] {
-            //                "-i", "../../../TestneDatoteke/DZ1_igraci.csv",
-            //                "-s", "../../../TestneDatoteke/DZ1_sastavi_utakmica.csv",
-            //                "-u", "../../../TestneDatoteke/DZ1_utakmice.csv",
-            //                "-k", "../../../TestneDatoteke/DZ1_klubovi.csv",
-            //                "-d", "../../../TestneDatoteke/DZ1_dogadaji.csv"
-            //            };
-            //#endif
-
-            //Interaktivno.GetInstance().UcitajLinije();
-
+#if DEBUG
+            // args za debug
+            args = new[] {
+                            "-i", "../../TestneDatoteke/DZ1_igraci.csv",
+                            "-s", "../../TestneDatoteke/DZ1_sastavi_utakmica.csv",
+                            "-u", "../../TestneDatoteke/DZ1_utakmice.csv",
+                            "-k", "../../TestneDatoteke/DZ1_klubovi.csv",
+                            "-d", "../../TestneDatoteke/DZ1_dogadaji.csv"
+                        };
+#endif
 
 
 
             //subota
             BazaPodataka bazaPodataka = BazaPodataka.DajInstancu();
             PodaciLoaderFactory podaciLoaderFactory = new PodaciLoaderFactory();
+
+            Zapisnik.Ispis(Zapisnik.OBAVIJEST, new string('=', 100));
+            Zapisnik.Ispis(Zapisnik.OBAVIJEST, "Ucitavanje datoteka:");
+            Zapisnik.Ispis(Zapisnik.OBAVIJEST, new string('=', 100));
 
             var loaderIgraca = podaciLoaderFactory.DohvatiIgracLoader();
             bazaPodataka.Igraci = loaderIgraca.UcitajPodatke(@"C:\FAX\9 semestar\UzDiz\2021\zadace\UzDiz_Nogometno_Prvenstvo\kmaodus_zadaca_1\kmaodus_zadaca_1\TestneDatoteke\DZ1_igraci.csv");
