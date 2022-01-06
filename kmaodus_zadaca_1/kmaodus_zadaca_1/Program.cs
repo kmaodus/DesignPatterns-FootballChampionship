@@ -25,7 +25,7 @@ namespace kmaodus_zadaca_1
                         };
 #endif
 
-
+            //..//
 
             //subota
             BazaPodataka bazaPodataka = BazaPodataka.DajInstancu();

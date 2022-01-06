@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="TestneDatoteke\DZ1_dogadaji.csv" />
     <None Include="TestneDatoteke\DZ1_igraci.csv" />
     <None Include="TestneDatoteke\DZ1_klubovi.csv" />

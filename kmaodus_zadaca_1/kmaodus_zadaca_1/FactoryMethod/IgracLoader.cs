@@ -71,7 +71,7 @@ namespace kmaodus_zadaca_1.FactoryMethod
 
         public List<Igrac> UcitajPodatke(string izvornaDatoteka)
         {
-            Zapisnik.Ispis(Zapisnik.OBAVIJEST, "=== Ucitavanje datoteke DZ1_igraci.csv ===");
+            Zapisnik.Ispis(Zapisnik.OBAVIJEST, $"=== Ucitavanje datoteke igraca - {izvornaDatoteka} ===");
 
             if (File.Exists(izvornaDatoteka))
             {

@@ -1,6 +1,6 @@
 ﻿namespace kmaodus_zadaca_1.Entiteti
 {
-    class StanjeKlubaNaLjestvici
+    public class StanjeKlubaNaLjestvici
     {
         public Klub Klub { get; set; }
         public int BrojOdigranihKola
@@ -22,6 +22,15 @@
         {
             get { return BrojPobjeda * 3 + BrojNeriješenih; }
             private set { }
+        }
+
+
+        public int BrojZutihKartona { get; set; }
+        public int BrojDrugihZutihKartona { get; set; }
+        public int BrojCrvenihKartona { get; set; }
+        public int UkupanBrojKartona
+        {
+            get { return BrojZutihKartona + BrojDrugihZutihKartona + BrojCrvenihKartona; }
         }
 
 

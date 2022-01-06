@@ -14,7 +14,7 @@ namespace kmaodus_zadaca_1.Entiteti
         public int BrojCrvenihKartona { get; set; }
         public int UkupanBrojKartona
         {
-            get { return BrojZutihKartona + BrojZutihKartona + BrojCrvenihKartona; }
+            get { return BrojZutihKartona + BrojDrugihZutihKartona + BrojCrvenihKartona; }
         }
 
 
