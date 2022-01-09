@@ -9,10 +9,10 @@ namespace kmaodus_zadaca_1.Entiteti
 {
     public class UtakmicaPotpuno
     {
-        public Sastav KlubDomacin { get; set; }
-        public Sastav KlubGost { get; set; }
+        public Sastav KlubDomacin { get; set; } = new Sastav();
+        public Sastav KlubGost { get; set; } = new Sastav();
         public Utakmica Utakmica { get; set; }
-        public List<Dogadaj> Dogadaji { get; set; }
+        public List<Dogadaj> Dogadaji { get; set; } = new List<Dogadaj>();
 
         public int KrajnjiRezultat { get; set; }
 

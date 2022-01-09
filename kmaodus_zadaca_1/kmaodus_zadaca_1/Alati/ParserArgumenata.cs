@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace kmaodus_zadaca_1.Alati
 {
-    static class ParserArgumenata
+    public class ParserArgumenata
     {
         // primjer unosa -i DZ_1_igraci.csv -s DZ_1_sastavi_utakmica.csv -u DZ_1_utakmice.csv -k DZ_1_klubovi.csv -d DZ_1_dogadaji.csv
 
@@ -17,7 +17,7 @@ namespace kmaodus_zadaca_1.Alati
         public static bool ProvjeriArgumente(string[] args)
         {
             bool ispravan = true;
-            string[] zastavice = { "-k", "-i", "-u", "-s", "-d" };
+            string[] zastavice = {"-i", "-k", "-u", "-s", "-d" };
 
             foreach (string zastavica in zastavice)
             {
@@ -42,22 +42,52 @@ namespace kmaodus_zadaca_1.Alati
             return ispravan;
         }
 
-        public static bool ProvjeriKljučeve(Dictionary<string, string> postavke)
+
+        public Dictionary<string, string> Postavke { get; set; }
+
+
+        public void UcitajPodatke(string kljuc, string vrijednost)
         {
-            string[] zastavice = { "klubovi", "igraci", "utakmice", "sastavi_utakmice", "dogadaji" };
-
-            foreach (var z in zastavice)
+            if (!ProvjeraNazivDatotekaPrazno(vrijednost))
             {
-                if (!postavke.ContainsKey(z))
+                switch (kljuc.Trim())
                 {
-                    Zapisnik.Ispis(Zapisnik.GRESKA, new string('=', 100));
-                    Zapisnik.Ispis(Zapisnik.GRESKA, $"[GRESKA] Konfiguracija nema kljuc --> {z}");
-                    Zapisnik.Ispis(Zapisnik.GRESKA, new string('=', 100));
-                    return false;
+                    case "-i":
+                        //VrsteVozila = new VozilaLoader(vrijednost).Podaci;
+                        break;
+                    case "-k":
+                        //Lokacije = new LokacijeLoader(vrijednost).Podaci;
+                        break;
+                    case "-u":
+                        break;
+                    case "-l":
+                        break;
+                    default:
+                        Zapisnik.Ispis(Zapisnik.GRESKA, $"\t[Greska] U konfiguracijskoj datoteci ne postoji opcija/naredba ---> {kljuc}");
+                        break;
                 }
-
             }
-            return true;
         }
+
+        public bool ProvjeraNazivDatotekaPrazno(string naziv) => string.IsNullOrEmpty(naziv);
+
+
+        //public static bool ProvjeriKljučeve(Dictionary<string, string> postavke)
+        //{
+        //    string[] zastavice = { "klubovi", "igraci", "utakmice", "sastavi_utakmice", "dogadaji" };
+
+        //    foreach (var z in zastavice)
+        //    {
+        //        if (!postavke.ContainsKey(z))
+        //        {
+        //            Zapisnik.Ispis(Zapisnik.GRESKA, new string('=', 100));
+        //            Zapisnik.Ispis(Zapisnik.GRESKA, $"[GRESKA] Konfiguracija nema kljuc --> {z}");
+        //            Zapisnik.Ispis(Zapisnik.GRESKA, new string('=', 100));
+        //            return false;
+        //        }
+
+        //    }
+        //    return true;
+        //}
     }
 }

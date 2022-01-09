@@ -6,6 +6,9 @@
         public Igrac Igrac { get; set; }
         public Klub Klub { get; set; }
 
-
+        public StanjeStrijelacaNaLjestvici()
+        {
+            BrojGolova = 0;
+        }
     }
 }

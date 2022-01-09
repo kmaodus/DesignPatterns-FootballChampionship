@@ -28,5 +28,6 @@ namespace kmaodus_zadaca_1.Singleton
             }
             return _instanca;
         }
+
     }
 }

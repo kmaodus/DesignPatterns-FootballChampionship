@@ -36,7 +36,7 @@ namespace kmaodus_zadaca_1.FactoryMethod
 
                 foreach (string red in redoviDatoteke)
                 {
-                    if (RegexHelper.ProvjeriIgrac(red))
+                    if (RegexHelper.ProvjeriUtakmicu(red))
                     {
                         igraci.Add(IzdvojiPodatak(red));
                     }

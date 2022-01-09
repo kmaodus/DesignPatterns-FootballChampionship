@@ -8,8 +8,6 @@ namespace kmaodus_zadaca_1.Entiteti
 {
     public abstract class Osoba
     {
-        public int ID { get; set; }
-
         public string ImePrezime { get; set; }
     }
 }

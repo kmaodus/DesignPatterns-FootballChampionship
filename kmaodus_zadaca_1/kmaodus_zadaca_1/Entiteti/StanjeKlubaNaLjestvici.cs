@@ -17,7 +17,7 @@
             get { return BrojDanihGolova - BrojPrimljenihGolova; }
         }
 
-        // 0-loss 1-tie 3-win
+        // 0-poraz 1-nerijeseno 3-pobjeda
         public int BrojBodova
         {
             get { return BrojPobjeda * 3 + BrojNeriješenih; }
