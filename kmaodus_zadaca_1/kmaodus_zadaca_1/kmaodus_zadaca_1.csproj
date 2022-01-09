@@ -44,13 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alati\AktivnostManager.cs" />
-    <Compile Include="Alati\EnumExtensions.cs" />
+    <Compile Include="Alati\IspisTablice.cs" />
     <Compile Include="Alati\ParserArgumenata.cs" />
     <Compile Include="Alati\PodaciReader.cs" />
     <Compile Include="Alati\RegexHelper.cs" />
     <Compile Include="Alati\Zapisnik.cs" />
     <Compile Include="Apstrakcije\IPodaciLoader.cs" />
-    <Compile Include="Builder\KlubPotpunoBuilder.cs" />
     <Compile Include="Builder\UtakmicaPotpunoBuilder.cs" />
     <Compile Include="Entiteti\Aktivnost.cs" />
     <Compile Include="Entiteti\Dogadaj.cs" />
@@ -81,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DijagramKlasa.cd" />
     <None Include="TestneDatoteke\DZ1_dogadaji.csv" />
     <None Include="TestneDatoteke\DZ1_igraci.csv" />
     <None Include="TestneDatoteke\DZ1_klubovi.csv" />

@@ -1,4 +1,5 @@
-﻿using kmaodus_zadaca_1.Entiteti.Enums;
+﻿using kmaodus_zadaca_1.Alati;
+using kmaodus_zadaca_1.Entiteti.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace kmaodus_zadaca_1.Entiteti
 
         private List<StanjeKlubaNaLjestvici> ListaStanjeKlubaNaLjestvici { get; set; } = new List<StanjeKlubaNaLjestvici>();
         private List<StanjeStrijelacaNaLjestvici> ListaStanjeStrijelacaNaLjestvici { get; set; } = new List<StanjeStrijelacaNaLjestvici>();
-        private List<StanjeKartonaNaLjestvici> ListaStanjaNaLjestvici { get; set; } = new List<StanjeKartonaNaLjestvici>();
+        //private List<StanjeKartonaNaLjestvici> ListaStanjaNaLjestvici { get; set; } = new List<StanjeKartonaNaLjestvici>();
 
 
         private Prvenstvo(List<UtakmicaPotpuno> utakmicePotpuno, List<Klub> listaKlubova, List<Igrac> listaIgraca)
@@ -29,6 +30,7 @@ namespace kmaodus_zadaca_1.Entiteti
         }
 
         public Prvenstvo() { }
+
         public static Prvenstvo DajInstancu(List<UtakmicaPotpuno> utakmicePotpuno, List<Klub> listaKlubova, List<Igrac> listaIgraca)
         {
             if (_instanca == null)
@@ -49,6 +51,8 @@ namespace kmaodus_zadaca_1.Entiteti
             ListaStanjeKlubaNaLjestvici.Clear();
 
             PopunjavanjeKlubovaNaStanjuLjestvice();
+
+
 
             foreach (var utakmicaPotpuno in UtakmicePotpuno)
             {
@@ -87,21 +91,22 @@ namespace kmaodus_zadaca_1.Entiteti
                             switch (rezultat)
                             {
                                 case 1:
-                                    stanjeKluba.BrojPoraza++;
-                                    break;
+                                    stanjeKluba.BrojPoraza++; break;
                                 case 2:
-                                    stanjeKluba.BrojPobjeda++;
-                                    break;
+                                    stanjeKluba.BrojPobjeda++; break;
                                 case 0:
-                                    stanjeKluba.BrojNeriješenih++;
-                                    break;
-                                default:
-                                    break;
+                                    stanjeKluba.BrojNeriješenih++; break;
+                                default: break;
                             }
                         }
                     }
                 }
             }
+            ListaStanjeKlubaNaLjestvici = ListaStanjeKlubaNaLjestvici.OrderByDescending(x => x.BrojBodova).ThenBy(x => x.Klub.Naziv).ToList();
+
+            // ispis tablice
+            IspisTablice printer = new IspisTablice();
+            printer.IspisiPregledLjestviceKlubovaNakonKola(ListaStanjeKlubaNaLjestvici);
         }
 
         private int OdrediPobjednika(UtakmicaPotpuno utakmicaPotpuno)
@@ -143,8 +148,8 @@ namespace kmaodus_zadaca_1.Entiteti
                 {
                     foreach (var dogadaj in utakmicaPotpuno.Dogadaji)
                     {
-                        if (dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_Igre || 
-                            dogadaj.Vrsta== (int)OznakeDogadaja.Gol_Iz_KaznenogUdarca )
+                        if (dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_Igre ||
+                            dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_KaznenogUdarca)
                         {
                             foreach (var strijelac in ListaStanjeStrijelacaNaLjestvici)
                             {
@@ -157,17 +162,23 @@ namespace kmaodus_zadaca_1.Entiteti
                     }
                 }
             }
+            //int igraciKojiSuZabiliGol = ListaStanjeStrijelacaNaLjestvici.Where(x => x.BrojGolova > 0).Count(); //TODO
 
-            int igraciKojiSuZabiliGol = ListaStanjeStrijelacaNaLjestvici.Where(x => x.BrojGolova > 0).Count(); //TODO
+            ListaStanjeStrijelacaNaLjestvici = ListaStanjeStrijelacaNaLjestvici.OrderByDescending(x => x.BrojGolova).ThenBy(x => x.Igrac.ImePrezime).ToList();
+
+            // ispis tablice
+            IspisTablice printer = new IspisTablice();
+            printer.IspisiPregledStrijelacaNakonKola(ListaStanjeStrijelacaNaLjestvici);
+
         }
         #endregion
 
-        #region PregledKartonaKlubovaNakonKola
-
+        #region Pregled ljestvice kartona po klubovima nakon određenog kola prvenstva ili za odigrana kola u prvenstvu
         //              feature 3:
         //              K2 - Ispis ljestvice kartona po klubovima nakon 2. kola prvenstva. Prikazuju se u
         //              obliku tablice s podacima o klubu, broju žutih kartona, broju drugih žutih
         //              karton, broju crvenih kartona, ukupan broj kartona.
+
         public void PregledKartonaKlubovaNakonKola(int kolo)
         {
             ListaStanjeKlubaNaLjestvici.Clear();
@@ -182,34 +193,63 @@ namespace kmaodus_zadaca_1.Entiteti
                     {
                         if (stanjeKluba.Klub == utakmicaPotpuno.KlubDomacin.Klub)
                         {
-                            //stanjeKluba.BrojDanihGolova += utakmicaPotpuno.DohvatiBrojGolovaDomacina();
-                            //stanjeKluba.BrojPrimljenihGolova += utakmicaPotpuno.DohvatiBrojGolovaGosta();
                             stanjeKluba.BrojZutihKartona += utakmicaPotpuno.DohvatiBrojPrvihZutihKartonaDomacina();
                             stanjeKluba.BrojDrugihZutihKartona += utakmicaPotpuno.DohvatiBrojDrugihZutihKartonaDomacina();
                             stanjeKluba.BrojCrvenihKartona += utakmicaPotpuno.DohvatiBrojCrvenihKartonaDomacina();
-
                         }
 
                         if (stanjeKluba.Klub == utakmicaPotpuno.KlubGost.Klub)
                         {
-                            //stanjeKluba.BrojDanihGolova += utakmicaPotpuno.DohvatiBrojGolovaGosta();
-                            //stanjeKluba.BrojPrimljenihGolova += utakmicaPotpuno.DohvatiBrojGolovaDomacina();
                             stanjeKluba.BrojZutihKartona += utakmicaPotpuno.DohvatiBrojPrvihZutihKartonaGosta();
                             stanjeKluba.BrojDrugihZutihKartona += utakmicaPotpuno.DohvatiBrojDrugihZutihKartonaDomacina();
                             stanjeKluba.BrojCrvenihKartona += utakmicaPotpuno.DohvatiBrojCrvenihKartonaGost();
-
                         }
                     }
                 }
-                int count = ListaStanjeKlubaNaLjestvici.Where(x => x.BrojZutihKartona > 0 || x.BrojCrvenihKartona > 0).Count();
+                //int count = ListaStanjeKlubaNaLjestvici.Where(x => x.BrojZutihKartona > 0 || x.BrojCrvenihKartona > 0).Count();
 
             }
+            ListaStanjeKlubaNaLjestvici = ListaStanjeKlubaNaLjestvici.OrderByDescending(x => x.UkupanBrojKartona).ThenBy(x => x.Klub.Naziv).ToList();
+
+            // ispis tablice
+            IspisTablice printer = new IspisTablice();
+            printer.IspisiPregledKartonaKlubovaNakonKola(ListaStanjeKlubaNaLjestvici);
+        }
+        #endregion
+
+        #region Pregled rezultata utakmica za klub nakon određenog kola prvenstva ili za odigrana kola u prvenstvu
+        /*
+          feature 4:
+            Sintaksa:
+                R klub [kolo] 
+                R D 4
+                Ispis rezultata za Dinamo nakon 4. kola prvenstva. Prikazuju se u obliku tablice
+                s podacima o kolu, datum i vrijeme, klub domaćin, klub gost, rezultat.
+        */
+
+        public void PregledRezultataUtakmicaZaKlubNakonKola(string klub, int kolo)
+        {
+            List<UtakmicaPotpuno> utakmiceKluba = new List<UtakmicaPotpuno>();
+
+            foreach (var utakmicaPotpuno in UtakmicePotpuno)
+            {
+                if (utakmicaPotpuno.Utakmica.Kolo <= kolo &&
+                    (utakmicaPotpuno.Utakmica.ID_Domacin == klub ||
+                    utakmicaPotpuno.Utakmica.ID_Gost == klub)) // TODO: dodati metodu za dohvat kola
+                {
+                    utakmiceKluba.Add(utakmicaPotpuno);
+                }
+            }
+
+            // ispis tablice
+            IspisTablice printer = new IspisTablice();
+            printer.IspisiPregledRezultataUtakmicaZaKlubNakonKola(utakmiceKluba);
         }
         #endregion
 
 
 
-
+        #region Pomoćne metode
         private void PopunjavanjeKlubovaNaStanjuLjestvice()
         {
             foreach (var klub in SviKlubovi)
@@ -227,6 +267,13 @@ namespace kmaodus_zadaca_1.Entiteti
             {
                 StanjeStrijelacaNaLjestvici tempStrijelacNaLjestvici = new StanjeStrijelacaNaLjestvici();
                 tempStrijelacNaLjestvici.Igrac = strijelac;
+                foreach (var klub in SviKlubovi)
+                {
+                    if (tempStrijelacNaLjestvici.Igrac.ID_Klub == klub.ID_Klub)
+                    {
+                        tempStrijelacNaLjestvici.Klub = klub;
+                    }
+                }
 
                 ListaStanjeStrijelacaNaLjestvici.Add(tempStrijelacNaLjestvici);
             }
@@ -256,5 +303,8 @@ namespace kmaodus_zadaca_1.Entiteti
         //        }
         //    }
         //}
+
+        #endregion
+
     }
 }

@@ -1,18 +1,16 @@
 ﻿using kmaodus_zadaca_1.Builder;
 using kmaodus_zadaca_1.Entiteti;
 using kmaodus_zadaca_1.Singleton;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace kmaodus_zadaca_1.Alati
 {
     public class AktivnostManager
     {
         private static AktivnostManager _instanca;
-        private List<UtakmicaPotpuno> utakmicePotpuno { get; set; }
+
+        private List<UtakmicaPotpuno> utakmicePotpuno { get; set; } = new List<UtakmicaPotpuno>();
         public Prvenstvo Prvenstvo { get; set; }
 
 
@@ -58,33 +56,55 @@ namespace kmaodus_zadaca_1.Alati
         {
             Prvenstvo.PregledKartonaKlubovaNakonKola(kolo);
         }
-        public void Aktivnost4(char klub, int kolo)
+        public void Aktivnost4(string klub, int kolo)
         {
+            Prvenstvo.PregledRezultataUtakmicaZaKlubNakonKola(klub, kolo);
         }
         #endregion
 
         public void IzvrsiAktivnosti(string unos)
         {
-            var poljeZnakova = unos.Trim().ToCharArray();
-            var oznaka = poljeZnakova[0];
-            //var broj = poljeZnakova[0];
+            int maxKolo = utakmicePotpuno.Max(x => x.Utakmica.Kolo);
 
-            //string parametar1;
-            //string parametar2;
+            char oznaka;
+            string uneseniKlub = "";
+            int brojKola;
+
+            var poljeZnakova = unos.Trim().ToCharArray();
+
+            if (poljeZnakova.Length == 3 )
+            {
+                oznaka = poljeZnakova[0];
+                uneseniKlub = poljeZnakova[1].ToString();
+                brojKola = int.Parse(poljeZnakova[2].ToString());
+            }
+            else if (poljeZnakova.Length == 2 && int.TryParse(poljeZnakova[1].ToString(), out brojKola))
+            {
+                oznaka = poljeZnakova[0];
+                brojKola = int.Parse(poljeZnakova[1].ToString());
+            }
+            else
+            {
+                oznaka = poljeZnakova[0];
+                //uneseniKlub = poljeZnakova[1].ToString();
+                brojKola = maxKolo;
+            }
+
 
             switch (oznaka)
             {
+                // TODO: parametar za kolo je opcionalan! 
                 case 'T':
-                    Aktivnost1(int.Parse(poljeZnakova[1].ToString()));
+                    Aktivnost1(brojKola);
                     break;
                 case 'S':
-                    Aktivnost2(int.Parse(poljeZnakova[1].ToString()));
+                    Aktivnost2(brojKola);
                     break;
                 case 'K':
-                    Aktivnost3(int.Parse(poljeZnakova[1].ToString()));
+                    Aktivnost3(brojKola);
                     break;
-                case 'R':
-                    Aktivnost4(poljeZnakova[1], poljeZnakova[2]);
+                case 'R': //R D 4 
+                    Aktivnost4(uneseniKlub, brojKola);
                     break;
                 default:
                     Zapisnik.Ispis(Zapisnik.GRESKA, $"\n[GRESKA] Neispravan unos, provjerite upisanu oznaku!");

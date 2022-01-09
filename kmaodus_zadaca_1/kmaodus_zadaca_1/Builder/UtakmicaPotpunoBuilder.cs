@@ -51,12 +51,11 @@ namespace kmaodus_zadaca_1.Builder
                 }
             }
 
-
             return utakmicaPotpuno;
         }
 
 
-        //metoda za postavljanje - bez duplciiranja koda
+        //metoda za postavljanje - bez dupliciranja koda
         //public KreirajSastavKluba(BazaPodataka bazaPodataka, Sastav sastavKluba)
         //{
         //    foreach (var zapis in bazaPodataka.SastaviUtakmica)

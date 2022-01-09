@@ -7,15 +7,15 @@ namespace kmaodus_zadaca_1.Alati
 {
     public class PodaciReader
     {
-        public static List<string> ProcitajDatoteku(string file)
+        public static List<string> ProcitajDatoteku(string datoteka)
         {
-            if (file == null)
+            if (datoteka == null)
             {
-                Zapisnik.Ispis(Zapisnik.GRESKA, $"Datoteka {file} nije procitana! Ne moze biti null");
+                Zapisnik.Ispis(Zapisnik.GRESKA, $"Datoteka {datoteka} nije procitana! Ne moze biti null");
                 throw new ArgumentNullException();
             }
 
-            List<string> fileRows = File.ReadAllLines(file)
+            List<string> fileRows = File.ReadAllLines(datoteka)
                 .Select(item => item.Trim())
                 .Skip(1)
                 .ToList();

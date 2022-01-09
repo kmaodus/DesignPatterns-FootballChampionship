@@ -16,18 +16,12 @@ namespace kmaodus_zadaca_1.Entiteti
 
         public int KrajnjiRezultat { get; set; }
 
-
-        //public int BrojPobjedaGosta { get; set; }
-        //public int BrojNerijesenihGosta { get; set; }
-        //public int BrojGubitakaGosta { get; set; }
-        //public int BrojBodovaGosta { get; set; }
-
         public UtakmicaPotpuno() { }
-
 
         public int DohvatiBrojGolovaDomacina()
         {
             int ukupanBrojGolova = 0;
+
             foreach (var dogadaj in Dogadaji)
             {
                 if (dogadaj.Klub == Utakmica.ID_Domacin && dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_Igre || dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_KaznenogUdarca)
