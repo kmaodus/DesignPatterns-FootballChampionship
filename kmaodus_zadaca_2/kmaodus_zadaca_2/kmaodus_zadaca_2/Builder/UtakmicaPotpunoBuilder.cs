@@ -1,8 +1,8 @@
-﻿using kmaodus_zadaca_1.Entiteti;
-using kmaodus_zadaca_1.Singleton;
+﻿using kmaodus_zadaca_2.Entiteti;
+using kmaodus_zadaca_2.Singleton;
 using System.Linq;
 
-namespace kmaodus_zadaca_1.Builder
+namespace kmaodus_zadaca_2.Builder
 {
     public class UtakmicaPotpunoBuilder
     {
@@ -49,6 +49,19 @@ namespace kmaodus_zadaca_1.Builder
 
             return utakmicaPotpuno;
         }
+
+
+        //metoda za postavljanje - bez dupliciranja koda
+        //public KreirajSastavKluba(BazaPodataka bazaPodataka, Sastav sastavKluba)
+        //{
+        //    foreach (var zapis in bazaPodataka.SastaviUtakmica)
+        //    {
+        //        if (zapis.Broj == utakmicaPotpuno.Utakmica.Broj && zapis.Klub == utakmicaPotpuno.KlubDomacin.Klub.ID_Klub)
+        //        {
+        //            sastavKluba.Igraci.Add((Igrac)bazaPodataka.Igraci.Where(x => x.ID_Klub == zapis.Klub && x.ImePrezime == zapis.Igrac));
+        //        }
+        //    }
+        //}
 
     }
 }

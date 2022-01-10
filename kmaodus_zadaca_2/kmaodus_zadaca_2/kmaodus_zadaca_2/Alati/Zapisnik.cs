@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace kmaodus_zadaca_1.Alati
+namespace kmaodus_zadaca_2.Alati
 {
     public class Zapisnik
     {

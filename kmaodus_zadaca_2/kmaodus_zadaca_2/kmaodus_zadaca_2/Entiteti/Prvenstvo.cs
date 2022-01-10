@@ -1,9 +1,9 @@
-﻿using kmaodus_zadaca_1.Alati;
-using kmaodus_zadaca_1.Entiteti.Enums;
+﻿using kmaodus_zadaca_2.Alati;
+using kmaodus_zadaca_2.Entiteti.Enums;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace kmaodus_zadaca_1.Entiteti
+namespace kmaodus_zadaca_2.Entiteti
 {
     public class Prvenstvo
     {

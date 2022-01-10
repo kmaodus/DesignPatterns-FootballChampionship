@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24ABDFB7-E967-43A0-94EC-2CD185CFD644}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>kmaodus_zadaca_2</RootNamespace>
+    <AssemblyName>kmaodus_zadaca_2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alati\AktivnostManager.cs" />
+    <Compile Include="Alati\IspisTablice.cs" />
+    <Compile Include="Alati\ParserArgumenata.cs" />
+    <Compile Include="Alati\PodaciReader.cs" />
+    <Compile Include="Alati\RegexHelper.cs" />
+    <Compile Include="Alati\Zapisnik.cs" />
+    <Compile Include="Apstrakcije\IPodaciLoader.cs" />
+    <Compile Include="Builder\UtakmicaPotpunoBuilder.cs" />
+    <Compile Include="Entiteti\Dogadaj.cs" />
+    <Compile Include="Entiteti\Enums\OznakeDogadaja.cs" />
+    <Compile Include="Entiteti\Enums\PozicijeIgraca.cs" />
+    <Compile Include="Entiteti\Enums\VrstaPrvenstva.cs" />
+    <Compile Include="Entiteti\Igrac.cs" />
+    <Compile Include="Entiteti\Klub.cs" />
+    <Compile Include="Entiteti\Osoba.cs" />
+    <Compile Include="Entiteti\Prvenstvo.cs" />
+    <Compile Include="Entiteti\Sastav.cs" />
+    <Compile Include="Entiteti\SastaviUtakmica.cs" />
+    <Compile Include="Entiteti\StanjeKartonaNaLjestvici.cs" />
+    <Compile Include="Entiteti\StanjeKlubaNaLjestvici.cs" />
+    <Compile Include="Entiteti\StanjeStrijelacaNaLjestvici.cs" />
+    <Compile Include="Entiteti\Trener.cs" />
+    <Compile Include="Entiteti\Utakmica.cs" />
+    <Compile Include="Entiteti\UtakmicaPotpuno.cs" />
+    <Compile Include="FactoryMethod\DogadajLoader.cs" />
+    <Compile Include="FactoryMethod\IgracLoader.cs" />
+    <Compile Include="FactoryMethod\KlubLoader.cs" />
+    <Compile Include="FactoryMethod\PodaciLoaderFactory.cs" />
+    <Compile Include="FactoryMethod\SastaviUtakmicaLoader.cs" />
+    <Compile Include="FactoryMethod\UtakmicaLoader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton\BazaPodataka.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestneDatoteke\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

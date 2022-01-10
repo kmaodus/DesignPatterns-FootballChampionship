@@ -1,4 +1,4 @@
-﻿namespace kmaodus_zadaca_1.Entiteti
+﻿namespace kmaodus_zadaca_2.Entiteti
 {
     public class StanjeKlubaNaLjestvici
     {
@@ -32,6 +32,7 @@
         {
             get { return BrojZutihKartona + BrojDrugihZutihKartona + BrojCrvenihKartona; }
         }
+
 
     }
 }

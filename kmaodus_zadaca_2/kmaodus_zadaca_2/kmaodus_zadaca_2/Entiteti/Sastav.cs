@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace kmaodus_zadaca_1.Entiteti
+namespace kmaodus_zadaca_2.Entiteti
 {
     public class Sastav
     {
@@ -10,7 +10,7 @@ namespace kmaodus_zadaca_1.Entiteti
         // provjeriti da igrac ima samo jednu poziciju u sastavu, od pozicija koje su mu ucitane
         public List<Igrac> Igraci { get; set; }
 
-        public Sastav() 
+        public Sastav()
         {
             Igraci = new List<Igrac>();
         }

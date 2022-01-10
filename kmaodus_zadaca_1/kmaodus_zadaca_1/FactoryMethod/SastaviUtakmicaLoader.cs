@@ -1,12 +1,8 @@
 ﻿using kmaodus_zadaca_1.Alati;
 using kmaodus_zadaca_1.Apstrakcije;
 using kmaodus_zadaca_1.Entiteti;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace kmaodus_zadaca_1.FactoryMethod
 {

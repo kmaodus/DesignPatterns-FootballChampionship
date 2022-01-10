@@ -1,36 +1,38 @@
-﻿using kmaodus_zadaca_1.Alati;
-using kmaodus_zadaca_1.Apstrakcije;
-using kmaodus_zadaca_1.Entiteti;
+﻿using kmaodus_zadaca_2.Alati;
+using kmaodus_zadaca_2.Apstrakcije;
+using kmaodus_zadaca_2.Entiteti;
 using System.Collections.Generic;
 using System.IO;
 
-namespace kmaodus_zadaca_1.FactoryMethod
+namespace kmaodus_zadaca_2.FactoryMethod
 {
-    public class KlubLoader : IPodaciLoader<Klub>
+    public class SastaviUtakmicaLoader : IPodaciLoader<SastaviUtakmica>
     {
-        public Klub IzdvojiPodatak(string red)
+        public SastaviUtakmica IzdvojiPodatak(string red)
         {
             string[] podaci = red.Split(';');
-            var idKlub = podaci[0].Trim();
-            var naziv = podaci[1].Trim();
-            var trener = podaci[2].Trim();
+            var broj = int.Parse(podaci[0].Trim());
+            var klub = podaci[1].Trim();
+            var vrsta = podaci[2].Trim();
+            var igrac = podaci[3].Trim();
+            var pozicija = podaci[4].Trim();
 
             // TODO: dodaj provjere
-            return new Klub(idKlub, naziv, trener);
+            return new SastaviUtakmica(broj, klub, vrsta, igrac, pozicija);
         }
 
-        public List<Klub> UcitajPodatke(string izvornaDatoteka)
+        public List<SastaviUtakmica> UcitajPodatke(string izvornaDatoteka)
         {
-            Zapisnik.Ispis(Zapisnik.OBAVIJEST, $"=== Ucitavanje datoteke klubova - {izvornaDatoteka} ===");
+            Zapisnik.Ispis(Zapisnik.OBAVIJEST, $"=== Ucitavanje datoteke sastava utakmica - {izvornaDatoteka} ===");
 
             if (File.Exists(izvornaDatoteka))
             {
-                List<Klub> igraci = new List<Klub>();
+                List<SastaviUtakmica> igraci = new List<SastaviUtakmica>();
                 List<string> redoviDatoteke = PodaciReader.ProcitajDatoteku(izvornaDatoteka);
 
                 foreach (string red in redoviDatoteke)
                 {
-                    if (RegexHelper.ProvjeriKlub(red))
+                    if (RegexHelper.ProvjeriSastavUtakmice(red))
                     {
                         igraci.Add(IzdvojiPodatak(red));
                     }

@@ -54,8 +54,6 @@ namespace kmaodus_zadaca_1.FactoryMethod
         //    }
         //}
 
-
-
         public Igrac IzdvojiPodatak(string red)
         {
             string[] podaci = red.Split(';');

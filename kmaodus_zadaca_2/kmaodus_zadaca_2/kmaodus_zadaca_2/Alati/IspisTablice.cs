@@ -1,10 +1,10 @@
-﻿using kmaodus_zadaca_1.Entiteti;
+﻿using kmaodus_zadaca_2.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace kmaodus_zadaca_1.Alati
+namespace kmaodus_zadaca_2.Alati
 {
     public class IspisTablice
     {

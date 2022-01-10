@@ -1,30 +1,25 @@
-﻿using kmaodus_zadaca_1.Alati;
-using kmaodus_zadaca_1.Entiteti;
-using kmaodus_zadaca_1.FactoryMethod;
-using kmaodus_zadaca_1.Singleton;
+﻿using kmaodus_zadaca_2.Alati;
+using kmaodus_zadaca_2.FactoryMethod;
+using kmaodus_zadaca_2.Singleton;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace kmaodus_zadaca_1
+namespace kmaodus_zadaca_2
 {
     class Program
     {
         static void Main(string[] args)
         {
-#if DEBUG
+            #if DEBUG
             // args za debug
             //args = new[] {
-            //                "-i", "../../TestneDatoteke/DZ1_igraci.csv",
-            //                "-s", "../../TestneDatoteke/DZ1_sastavi_utakmica.csv",
-            //                "-u", "../../TestneDatoteke/DZ1_utakmice.csv",
-            //                "-k", "../../TestneDatoteke/DZ1_klubovi.csv",
-            //                "-d", "../../TestneDatoteke/DZ1_dogadaji.csv"
+            //                "-i", "../../TestneDatoteke/DZ2_igraci.csv",
+            //                "-s", "../../TestneDatoteke/DZ2_sastavi_utakmica.csv",
+            //                "-u", "../../TestneDatoteke/DZ2_utakmice.csv",
+            //                "-k", "../../TestneDatoteke/DZ2_klubovi.csv",
+            //                "-d", "../../TestneDatoteke/DZ2_dogadaji.csv"
             //            };
-#endif
+            #endif
 
             Console.SetWindowSize(150, 45);
 
@@ -72,6 +67,7 @@ namespace kmaodus_zadaca_1
                 IzlaznaPoruka("Neispravni argumenti!");
             }
         }
+
 
         private static void PrikaziMenu()
         {
@@ -122,3 +118,5 @@ namespace kmaodus_zadaca_1
         }
     }
 }
+
+

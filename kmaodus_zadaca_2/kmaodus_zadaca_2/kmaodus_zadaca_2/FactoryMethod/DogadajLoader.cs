@@ -1,11 +1,11 @@
-﻿using kmaodus_zadaca_1.Alati;
-using kmaodus_zadaca_1.Apstrakcije;
-using kmaodus_zadaca_1.Entiteti;
+﻿using kmaodus_zadaca_2.Alati;
+using kmaodus_zadaca_2.Apstrakcije;
+using kmaodus_zadaca_2.Entiteti;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace kmaodus_zadaca_1.FactoryMethod
+namespace kmaodus_zadaca_2.FactoryMethod
 {
     public class DogadajLoader : IPodaciLoader<Dogadaj>
     {
@@ -45,8 +45,8 @@ namespace kmaodus_zadaca_1.FactoryMethod
 
                 foreach (string red in redoviDatoteke)
                 {
-                    if (RegexHelper.ProvjeriDogadaj_DOGADAJI_POCETAK_KRAJ_UTAKMICE(red)|
-                        RegexHelper.ProvjeriDogadaj_DOGADAJI_GOL_KARTONI(red)|
+                    if (RegexHelper.ProvjeriDogadaj_DOGADAJI_POCETAK_KRAJ_UTAKMICE(red) |
+                        RegexHelper.ProvjeriDogadaj_DOGADAJI_GOL_KARTONI(red) |
                         RegexHelper.ProvjeriDogadaj_DOGADAJI_ZAMJENA_IGRACA(red))
                     {
                         dogadaji.Add(IzdvojiPodatak(red));

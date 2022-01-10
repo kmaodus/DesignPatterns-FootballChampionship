@@ -1,10 +1,10 @@
-﻿using kmaodus_zadaca_1.Alati;
-using kmaodus_zadaca_1.Apstrakcije;
-using kmaodus_zadaca_1.Entiteti;
+﻿using kmaodus_zadaca_2.Alati;
+using kmaodus_zadaca_2.Apstrakcije;
+using kmaodus_zadaca_2.Entiteti;
 using System.Collections.Generic;
 using System.IO;
 
-namespace kmaodus_zadaca_1.FactoryMethod
+namespace kmaodus_zadaca_2.FactoryMethod
 {
     public class KlubLoader : IPodaciLoader<Klub>
     {
