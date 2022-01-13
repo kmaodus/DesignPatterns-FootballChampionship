@@ -57,7 +57,7 @@ namespace kmaodus_zadaca_2.Entiteti
                 {
                     foreach (var stanjeKluba in ListaStanjeKlubaNaLjestvici)
                     {
-                        if (stanjeKluba.Klub == utakmicaPotpuno.KlubDomacin.Klub)
+                        if (stanjeKluba.Klub == utakmicaPotpuno.KlubDomacin)
                         {
                             stanjeKluba.BrojDanihGolova += utakmicaPotpuno.DohvatiBrojGolovaDomacina();
                             stanjeKluba.BrojPrimljenihGolova += utakmicaPotpuno.DohvatiBrojGolovaGosta();
@@ -79,7 +79,7 @@ namespace kmaodus_zadaca_2.Entiteti
                             }
                         }
 
-                        if (stanjeKluba.Klub == utakmicaPotpuno.KlubGost.Klub)
+                        if (stanjeKluba.Klub == utakmicaPotpuno.KlubGost)
                         {
                             stanjeKluba.BrojDanihGolova += utakmicaPotpuno.DohvatiBrojGolovaGosta();
                             stanjeKluba.BrojPrimljenihGolova += utakmicaPotpuno.DohvatiBrojGolovaDomacina();
@@ -188,14 +188,14 @@ namespace kmaodus_zadaca_2.Entiteti
                 {
                     foreach (var stanjeKluba in ListaStanjeKlubaNaLjestvici)
                     {
-                        if (stanjeKluba.Klub == utakmicaPotpuno.KlubDomacin.Klub)
+                        if (stanjeKluba.Klub == utakmicaPotpuno.KlubDomacin)
                         {
                             stanjeKluba.BrojZutihKartona += utakmicaPotpuno.DohvatiBrojPrvihZutihKartonaDomacina();
                             stanjeKluba.BrojDrugihZutihKartona += utakmicaPotpuno.DohvatiBrojDrugihZutihKartonaDomacina();
                             stanjeKluba.BrojCrvenihKartona += utakmicaPotpuno.DohvatiBrojCrvenihKartonaDomacina();
                         }
 
-                        if (stanjeKluba.Klub == utakmicaPotpuno.KlubGost.Klub)
+                        if (stanjeKluba.Klub == utakmicaPotpuno.KlubGost)
                         {
                             stanjeKluba.BrojZutihKartona += utakmicaPotpuno.DohvatiBrojPrvihZutihKartonaGosta();
                             stanjeKluba.BrojDrugihZutihKartona += utakmicaPotpuno.DohvatiBrojDrugihZutihKartonaDomacina();

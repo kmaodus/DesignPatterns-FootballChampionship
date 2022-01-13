@@ -19,14 +19,14 @@ namespace kmaodus_zadaca_2.FactoryMethod
             return new Klub(idKlub, naziv, trener);
         }
 
-        public List<Klub> UcitajPodatke(string izvornaDatoteka)
+        public List<Klub> UcitajPodatke(List<string> redoviDatoteke)
         {
-            Zapisnik.Ispis(Zapisnik.OBAVIJEST, $"=== Ucitavanje datoteke klubova - {izvornaDatoteka} ===");
+            //Zapisnik.Ispis(Zapisnik.OBAVIJEST, $"=== Ucitavanje datoteke klubova - {izvornaDatoteka} ===");
 
-            if (File.Exists(izvornaDatoteka))
-            {
+            //if (File.Exists(izvornaDatoteka))
+            //{
                 List<Klub> igraci = new List<Klub>();
-                List<string> redoviDatoteke = PodaciReader.ProcitajDatoteku(izvornaDatoteka);
+                //List<string> redoviDatoteke = PodaciReader.ProcitajDatoteku(izvornaDatoteka);
 
                 foreach (string red in redoviDatoteke)
                 {
@@ -40,12 +40,12 @@ namespace kmaodus_zadaca_2.FactoryMethod
                     }
                 }
                 return igraci;
-            }
-            else
-            {
-                Zapisnik.Ispis(Zapisnik.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
-                return null;
-            }
+            //}
+            //else
+            //{
+            //    Zapisnik.Ispis(Zapisnik.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
+            //    return null;
+            //}
         }
     }
 }

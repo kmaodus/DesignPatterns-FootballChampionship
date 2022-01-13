@@ -2,6 +2,11 @@
 {
     public class Trener : Osoba
     {
+        public Trener() { }
 
+        public Trener(string trener)
+        {
+            this.ImePrezime = trener;
+        }
     }
 }

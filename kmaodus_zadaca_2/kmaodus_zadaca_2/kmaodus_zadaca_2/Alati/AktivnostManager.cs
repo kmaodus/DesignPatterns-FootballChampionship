@@ -83,10 +83,15 @@ namespace kmaodus_zadaca_2.Alati
                 oznaka = poljeZnakova[0];
                 brojKola = int.Parse(poljeZnakova[1].ToString());
             }
+            else if (poljeZnakova.Length == 2 && !int.TryParse(poljeZnakova[1].ToString(), out brojKola))
+            {
+                oznaka = poljeZnakova[0];
+                uneseniKlub = poljeZnakova[1].ToString();
+                brojKola = maxKolo;
+            }
             else
             {
                 oznaka = poljeZnakova[0];
-                //uneseniKlub = poljeZnakova[1].ToString();
                 brojKola = maxKolo;
             }
 

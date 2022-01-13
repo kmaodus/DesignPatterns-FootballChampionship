@@ -81,9 +81,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="TestneDatoteke\DZ2_dogadaji.csv" />
+    <None Include="TestneDatoteke\DZ2_dogadaji_1.csv" />
+    <None Include="TestneDatoteke\DZ2_igraci.csv" />
+    <None Include="TestneDatoteke\DZ2_klubovi.csv" />
+    <None Include="TestneDatoteke\DZ2_sastavi_utakmica.csv" />
+    <None Include="TestneDatoteke\DZ2_utakmice.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TestneDatoteke\" />
+    <ProjectReference Include="..\kmaodus_zadaca_2_ucitavanje\kmaodus_zadaca_2_ucitavanje.csproj">
+      <Project>{bbfa9a19-cc2d-4990-be5f-ea1cb79616f6}</Project>
+      <Name>kmaodus_zadaca_2_ucitavanje</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

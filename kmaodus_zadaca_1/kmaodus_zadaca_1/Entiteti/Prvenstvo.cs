@@ -99,7 +99,9 @@ namespace kmaodus_zadaca_1.Entiteti
                     }
                 }
             }
-            ListaStanjeKlubaNaLjestvici = ListaStanjeKlubaNaLjestvici.OrderByDescending(x => x.BrojBodova).ThenBy(x => x.Klub.Naziv).ToList();
+            ListaStanjeKlubaNaLjestvici = ListaStanjeKlubaNaLjestvici.OrderByDescending(x => x.BrojBodova)
+                .ThenByDescending(x => x.BrojPrimljenihGolova)
+                .ThenBy(x => x.Klub.Naziv).ToList();
 
             // ispis tablice
             IspisTablice printer = new IspisTablice();

@@ -11,10 +11,10 @@ namespace kmaodus_zadaca_1.Alati
         const string DOGADAJI_POCETAK_KRAJ_UTAKMICE = @"^(\s*)\d{1,4}\s*(;)(\s*)\d{1,4}(\+\d{1,2})?\s*(;)(\s*)[0-99]{1,2}\s*(;)(\s|;)*$";
         const string DOGADAJI_GOL_KARTONI = @"^(\s*)\d{1,4}(\s*)(;)(\s*)\d{1,4}(\+\d{1,2})?(\s*)(;)(\s*)(1|2|3|10|11)(\s*)(;)(\s*)[A-Za-z\u0106-\u01C4]{1,2}(\s*)(;)\s*([A-Za-zäëöüÄÖÜß\u0106-\u01C4\-]+\s*)+(\s|;)*$";
         const string DOGADAJI_ZAMJENA_IGRACA = @"^(\s*)\d{1,4}(\s*)(;)(\s*)\d{1,4}(\+\d{1,2})?(\s*)(;)(\s*)\d[20](\s*)(;)(\s*)[A-Za-z\u0106-\u01C4]{1,2}(\s*)(;)\s*([A-Za-zäëöüÄÖÜß\u0106-\u01C4\-]+\s*)+(;)\s*([A-Za-zäëöüÄÖÜß\u0106-\u01C4\-]+\s*)+(\s|;)*$";
-        const string AKTIVNOST_1 = @"^(\s*)[tT]{1}(\s*)\d+(\s*)$";
-        const string AKTIVNOST_2 = @"^(\s*)[sS]{1}(\s*)\d+(\s*)$";
-        const string AKTIVNOST_3 = @"^(\s*)[kK]{1}(\s*)\d+(\s*)$";
-        const string AKTIVNOST_4 = @"^(\s*)[rR]{1}(\s*)[A-Za-z\u0106-\u01C4]{1,3}(\s*)\d+(\s*)$";
+        const string AKTIVNOST_1 = @"^(\s*)[tT]{1}(\s*)\d*(\s*)$";
+        const string AKTIVNOST_2 = @"^(\s*)[sS]{1}(\s*)\d*(\s*)$";
+        const string AKTIVNOST_3 = @"^(\s*)[kK]{1}(\s*)\d*(\s*)$";
+        const string AKTIVNOST_4 = @"^(\s*)[rR]{1}(\s*)[A-Za-z\u0106-\u01C4]{1,3}(\s*)\d*(\s*)$";
 
         public static bool ProvjeriIgrac(string unos)
         {

@@ -21,33 +21,33 @@ namespace kmaodus_zadaca_2.FactoryMethod
             return new SastaviUtakmica(broj, klub, vrsta, igrac, pozicija);
         }
 
-        public List<SastaviUtakmica> UcitajPodatke(string izvornaDatoteka)
+        public List<SastaviUtakmica> UcitajPodatke(List<string> redoviDatoteke)
         {
-            Zapisnik.Ispis(Zapisnik.OBAVIJEST, $"=== Ucitavanje datoteke sastava utakmica - {izvornaDatoteka} ===");
+            //    Zapisnik.Ispis(Zapisnik.OBAVIJEST, $"=== Ucitavanje datoteke sastava utakmica - {izvornaDatoteka} ===");
 
-            if (File.Exists(izvornaDatoteka))
+            //    if (File.Exists(izvornaDatoteka))
+            //    {
+            List<SastaviUtakmica> igraci = new List<SastaviUtakmica>();
+            //List<string> redoviDatoteke = PodaciReader.ProcitajDatoteku(izvornaDatoteka);
+
+            foreach (string red in redoviDatoteke)
             {
-                List<SastaviUtakmica> igraci = new List<SastaviUtakmica>();
-                List<string> redoviDatoteke = PodaciReader.ProcitajDatoteku(izvornaDatoteka);
-
-                foreach (string red in redoviDatoteke)
+                if (RegexHelper.ProvjeriSastavUtakmice(red))
                 {
-                    if (RegexHelper.ProvjeriSastavUtakmice(red))
-                    {
-                        igraci.Add(IzdvojiPodatak(red));
-                    }
-                    else
-                    {
-                        Zapisnik.Ispis(Zapisnik.UPOZORENJE, $"\t[UPOZORENJE] Preskacem red {red} --> neispravan zapis!");
-                    }
+                    igraci.Add(IzdvojiPodatak(red));
                 }
-                return igraci;
+                else
+                {
+                    Zapisnik.Ispis(Zapisnik.UPOZORENJE, $"\t[UPOZORENJE] Preskacem red {red} --> neispravan zapis!");
+                }
             }
-            else
-            {
-                Zapisnik.Ispis(Zapisnik.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
-                return null;
-            }
+            return igraci;
+            //}
+            //else
+            //{
+            //    Zapisnik.Ispis(Zapisnik.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
+            //    return null;
+            //}
         }
     }
 }

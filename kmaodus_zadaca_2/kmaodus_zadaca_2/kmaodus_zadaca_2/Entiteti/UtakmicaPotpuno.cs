@@ -5,8 +5,8 @@ namespace kmaodus_zadaca_2.Entiteti
 {
     public class UtakmicaPotpuno
     {
-        public Sastav KlubDomacin { get; set; } = new Sastav();
-        public Sastav KlubGost { get; set; } = new Sastav();
+        public Klub KlubDomacin { get; set; } = new Klub();
+        public Klub KlubGost { get; set; } = new Klub();
         public Utakmica Utakmica { get; set; }
         public List<Dogadaj> Dogadaji { get; set; } = new List<Dogadaj>();
 
