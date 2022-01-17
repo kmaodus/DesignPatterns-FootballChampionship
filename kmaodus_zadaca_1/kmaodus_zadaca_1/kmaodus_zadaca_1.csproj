@@ -51,7 +51,6 @@
     <Compile Include="Alati\Zapisnik.cs" />
     <Compile Include="Apstrakcije\IPodaciLoader.cs" />
     <Compile Include="Builder\UtakmicaPotpunoBuilder.cs" />
-    <Compile Include="Entiteti\Aktivnost.cs" />
     <Compile Include="Entiteti\Dogadaj.cs" />
     <Compile Include="Entiteti\Enums\OznakeDogadaja.cs" />
     <Compile Include="Entiteti\Enums\PozicijeIgraca.cs" />
@@ -80,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="DijagramKlasa.cd" />
     <None Include="TestneDatoteke\DZ1_dogadaji.csv" />
     <None Include="TestneDatoteke\DZ1_igraci.csv" />
     <None Include="TestneDatoteke\DZ1_klubovi.csv" />

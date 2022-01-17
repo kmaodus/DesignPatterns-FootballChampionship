@@ -10,6 +10,7 @@ namespace kmaodus_zadaca_1.Alati
     {
         protected const int SIRINA_TABLICE = 150;
         protected const int SIRINA_TABLICE_STRIJELACA = 125;
+        protected const int SIRINA_TABLICE_REZULTATA = 101;
 
         public IspisTablice() { }
 
@@ -64,10 +65,12 @@ namespace kmaodus_zadaca_1.Alati
 
         public void IspisiPregledRezultataUtakmicaZaKlubNakonKola(List<UtakmicaPotpuno> utakmicePotpuno)
         {
+            Console.WriteLine();
+
             // Broj kola | Datum i vrijeme | Klub domacin | Rezultat | Klub gost 
             //     1.    | 17.7.2021 21:00 |     Rijeka   | 2 - 0    |  Gorica 
-            //Console.WriteLine(String.Format("| {0, -10} | {1, 20} | {2, 20} | {3, 20} | {4, 20} |", "Broj kola", "Datum i vrijeme", "Klub domacin", "Rezultat", "Klub gost"));
-            Zapisnik.Ispis(Zapisnik.OBAVIJEST, String.Format("\n| {0, -10} | {1, 20} | {2, 20} | {3, 15} | {4, 20} |", "Broj kola", "Datum i vrijeme", "Klub domacin", "Rezultat", "Klub gost"));
+            Console.WriteLine(String.Format("| {0, -10} | {1, 20} | {2, 20} | {3, 15} | {4, 20} |", "Broj kola", "Datum i vrijeme", "Klub domacin", "Rezultat", "Klub gost"));
+            //Zapisnik.Ispis(Zapisnik.OBAVIJEST, String.Format("\n| {0, -10} | {1, 20} | {2, 20} | {3, 15} | {4, 20} |", "Broj kola", "Datum i vrijeme", "Klub domacin", "Rezultat", "Klub gost"));
 
             foreach (var klub in utakmicePotpuno)
             {
@@ -78,7 +81,7 @@ namespace kmaodus_zadaca_1.Alati
                 rezultat.Append(klub.DohvatiBrojGolovaDomacina() + " - " + klub.DohvatiBrojGolovaGosta());
 
                 Console.WriteLine(String.Format("| {0, -10} | {1, 20} | {2, 20} | {3, 15} | {4, 20} |", klub.Utakmica.Kolo, datumVrijeme, klub.KlubDomacin.Klub.Naziv, rezultat, klub.KlubGost.Klub.Naziv));
-                Console.WriteLine(new string('-', SIRINA_TABLICE));
+                Console.WriteLine(new string('-', SIRINA_TABLICE_REZULTATA));
             }
 
         }

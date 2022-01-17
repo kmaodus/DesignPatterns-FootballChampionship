@@ -72,7 +72,20 @@ namespace kmaodus_zadaca_1.Alati
 
             var poljeZnakova = unos.Trim().ToCharArray();
 
-            if (poljeZnakova.Length == 3 )
+            if ((poljeZnakova.Length == 3 || poljeZnakova.Length == 4) && (poljeZnakova.All(char.IsLetter) /*|| poljeZnakova[3].Equals */))
+            {
+                oznaka = poljeZnakova[0];
+                uneseniKlub = $"{poljeZnakova[1].ToString()}{poljeZnakova[2].ToString()}";
+                brojKola = maxKolo;
+            }
+            else if (poljeZnakova.Length == 4)
+            {
+                oznaka = poljeZnakova[0];
+                uneseniKlub = $"{poljeZnakova[1].ToString()}{poljeZnakova[2].ToString()}";
+                brojKola = int.Parse(poljeZnakova[3].ToString());
+            }
+
+            else if (poljeZnakova.Length == 3)
             {
                 oznaka = poljeZnakova[0];
                 uneseniKlub = poljeZnakova[1].ToString();

@@ -278,31 +278,6 @@ namespace kmaodus_zadaca_1.Entiteti
             }
         }
 
-        //metoda za brisanje strijelaca
-        //public void ObrisiStrijelcaIzListe(){}
-
-
-        //TODO: metoda za dohvat lista
-        //public List<StanjeKlubaNaLjestvici> DohvatiStanjeKlubovaNakonKola(List<Klub> listaKlubova)
-        //{
-        //    List<StanjeKlubaNaLjestvici> stanjeKlubovaNaLjestvici;
-
-        //    foreach (var klub in listaKlubova)
-        //    {
-        //        StanjeKlubaNaLjestvici stanjeKlubaNaLjestvici = new StanjeKlubaNaLjestvici();
-
-        //        foreach (var utakmica in UtakmicePotpuno)
-        //        {
-        //            if (utakmica.KlubDomacin == klub || utakmica.KlubGost == klub)
-        //            {
-        //                // utakmicaPotpuno - iz nje sve
-
-
-        //            }
-        //        }
-        //    }
-        //}
-
         #endregion
 
     }
