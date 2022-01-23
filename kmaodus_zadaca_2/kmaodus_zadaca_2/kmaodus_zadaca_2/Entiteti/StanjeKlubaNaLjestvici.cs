@@ -1,6 +1,9 @@
-﻿namespace kmaodus_zadaca_2.Entiteti
+﻿using kmaodus_zadaca_2.Decorator;
+using System.Collections.Generic;
+
+namespace kmaodus_zadaca_2.Entiteti
 {
-    public class StanjeKlubaNaLjestvici
+    public class StanjeKlubaNaLjestvici : IKomponenta
     {
         public Klub Klub { get; set; }
         public int BrojOdigranihKola
@@ -33,6 +36,26 @@
             get { return BrojZutihKartona + BrojDrugihZutihKartona + BrojCrvenihKartona; }
         }
 
+        public override void Dodaj(IKomponenta child)
+        {
+            throw new System.NotImplementedException();
+        }
 
+        public override IKomponenta GetChild(int index)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override List<IKomponenta> GetChildren()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Prikazi() { }
+
+        public override void Ukloni(IKomponenta child)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

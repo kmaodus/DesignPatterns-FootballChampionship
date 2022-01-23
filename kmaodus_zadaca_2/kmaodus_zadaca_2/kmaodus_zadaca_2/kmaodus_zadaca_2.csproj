@@ -48,7 +48,6 @@
     <Compile Include="Alati\AktivnostManager.cs" />
     <Compile Include="Alati\IspisTablice.cs" />
     <Compile Include="Alati\ParserArgumenata.cs" />
-    <Compile Include="Alati\PodaciReader.cs" />
     <Compile Include="Alati\RegexHelper.cs" />
     <Compile Include="Alati\Zapisnik.cs" />
     <Compile Include="Apstrakcije\IPodaciLoader.cs" />

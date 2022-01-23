@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace kmaodus_zadaca_2.Decorator
 {
-    abstract class IKomponenta
+    public abstract class IKomponenta
     {
         public DateTime Pocetak { get; set; }
         public DateTime Kraj { get; set; }

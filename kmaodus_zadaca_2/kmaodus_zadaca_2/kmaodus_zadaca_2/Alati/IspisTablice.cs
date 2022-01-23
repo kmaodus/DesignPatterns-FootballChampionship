@@ -9,6 +9,7 @@ namespace kmaodus_zadaca_2.Alati
     public class IspisTablice
     {
         protected const int SIRINA_TABLICE = 150;
+        protected const int SIRINA_TABLICE_LJESTVICE = 173;
         protected const int SIRINA_TABLICE_STRIJELACA = 125;
         protected const int SIRINA_TABLICE_REZULTATA = 101;
 
@@ -17,17 +18,17 @@ namespace kmaodus_zadaca_2.Alati
         public void IspisiPregledLjestviceKlubovaNakonKola(List<StanjeKlubaNaLjestvici> stanjeKlubaNaLjestvici)
         {
             Console.WriteLine();
-            Console.WriteLine(new string('-', SIRINA_TABLICE));
+            Console.WriteLine(new string('-', SIRINA_TABLICE_LJESTVICE));
             // Klub | Broj odigranih kola | Pobjeda | Nerijeseno | Poraz | Dani golovi | Primljeni golovi | Razlika golova | Broj bodova
-            Console.WriteLine(String.Format("| {0, -20} | {1, -15} | {2, -8} | {3, -8} | {4, -5} | {5, -8} | {6, -10} | {7, -10} | {8, -19} |\n", "Klub", "Broj odigranih kola", "Pobjeda", "Nerijeseno", "Poraz", "Dani golovi", "Primljeni golovi", "Razlika golova", "Broj bodova"));
-            Console.WriteLine(new string('-', SIRINA_TABLICE));
+            Console.WriteLine(String.Format("| {0, -20} | {1, -20} | {2, -15} | {3, -8} | {4, -8} | {5, -5} | {6, -8} | {7, -10} | {8, -10} | {9, -19} |\n", "Klub", "Trener", "Broj odigranih kola", "Pobjeda", "Nerijeseno", "Poraz", "Dani golovi", "Primljeni golovi", "Razlika golova", "Broj bodova"));
+            Console.WriteLine(new string('-', SIRINA_TABLICE_LJESTVICE));
 
             foreach (var klub in stanjeKlubaNaLjestvici)
             {
-                Console.WriteLine(String.Format("| {0, -20} | {1, -19} | {2, -8} | {3, -10} | {4, -5} | {5, -11} | {6, -16} | {7, -14} | {8, -19} |",
-                    klub.Klub.Naziv, klub.BrojOdigranihKola, klub.BrojPobjeda, klub.BrojNeriješenih, klub.BrojPoraza, klub.BrojDanihGolova,
+                Console.WriteLine(String.Format("| {0, -20} | {1, -19} |  {2, -19} | {3, -8} | {4, -10} | {5, -5} | {6, -11} | {7, -16} | {8, -14} | {9, -19} |",
+                    klub.Klub.Naziv, klub.Klub.Trener.ImePrezime, klub.BrojOdigranihKola, klub.BrojPobjeda, klub.BrojNeriješenih, klub.BrojPoraza, klub.BrojDanihGolova,
                     klub.BrojPrimljenihGolova, klub.RazlikaGolova, klub.BrojBodova));
-                Console.WriteLine(new string('-', SIRINA_TABLICE));
+                Console.WriteLine(new string('-', SIRINA_TABLICE_LJESTVICE));
             }
         }
 

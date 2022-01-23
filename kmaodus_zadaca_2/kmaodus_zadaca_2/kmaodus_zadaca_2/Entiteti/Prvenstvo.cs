@@ -99,7 +99,12 @@ namespace kmaodus_zadaca_2.Entiteti
                     }
                 }
             }
-            ListaStanjeKlubaNaLjestvici = ListaStanjeKlubaNaLjestvici.OrderByDescending(x => x.BrojBodova).ThenBy(x => x.Klub.Naziv).ToList();
+            ListaStanjeKlubaNaLjestvici = ListaStanjeKlubaNaLjestvici
+                .OrderByDescending(x => x.BrojBodova)
+                .ThenByDescending(x => x.RazlikaGolova)
+                .ThenByDescending(x => x.BrojDanihGolova)
+                .ThenByDescending(x => x.BrojPobjeda)
+                .ToList();
 
             // ispis tablice
             IspisTablice printer = new IspisTablice();
@@ -161,7 +166,10 @@ namespace kmaodus_zadaca_2.Entiteti
             }
             //int igraciKojiSuZabiliGol = ListaStanjeStrijelacaNaLjestvici.Where(x => x.BrojGolova > 0).Count(); //TODO
 
-            ListaStanjeStrijelacaNaLjestvici = ListaStanjeStrijelacaNaLjestvici.OrderByDescending(x => x.BrojGolova).ThenBy(x => x.Igrac.ImePrezime).ToList();
+            ListaStanjeStrijelacaNaLjestvici = ListaStanjeStrijelacaNaLjestvici
+                .OrderByDescending(x => x.BrojGolova)
+                .ThenByDescending(x => x.Igrac.ImePrezime)
+                .ToList();
 
             // ispis tablice
             IspisTablice printer = new IspisTablice();
@@ -206,7 +214,11 @@ namespace kmaodus_zadaca_2.Entiteti
                 //int count = ListaStanjeKlubaNaLjestvici.Where(x => x.BrojZutihKartona > 0 || x.BrojCrvenihKartona > 0).Count();
 
             }
-            ListaStanjeKlubaNaLjestvici = ListaStanjeKlubaNaLjestvici.OrderByDescending(x => x.UkupanBrojKartona).ThenBy(x => x.Klub.Naziv).ToList();
+            ListaStanjeKlubaNaLjestvici = ListaStanjeKlubaNaLjestvici
+                .OrderByDescending(x => x.UkupanBrojKartona)
+                .ThenByDescending(x => x.BrojCrvenihKartona)
+                .ThenByDescending(x => x.BrojDrugihZutihKartona)
+                .ToList();
 
             // ispis tablice
             IspisTablice printer = new IspisTablice();

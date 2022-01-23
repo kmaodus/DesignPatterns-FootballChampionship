@@ -9,6 +9,7 @@ namespace kmaodus_zadaca_2.Decorator
         protected const int SIRINA_TABLICE_REZULTATA = 101;
 
         protected IKomponenta komponenta;
+        protected List<IKomponenta> listaKomponenata;
 
         public Decorator(IKomponenta c)
         {
