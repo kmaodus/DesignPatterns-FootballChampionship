@@ -88,6 +88,10 @@ namespace kmaodus_zadaca_2
                 Console.WriteLine($"\t Pregled ljestvice strijelaca nakon određenog kola prvenstva ili za sva odigrana kola u prvenstvu, npr. S3 ");
                 Console.WriteLine($"\t Pregled ljestvice kartona po klubovima nakon određenog kola prvenstva ili za odigrana kola u prvenstvu, npr. K2 ");
                 Console.WriteLine($"\t Pregled rezultata utakmica za klub nakon određenog kola prvenstva ili za odigrana kola u prvenstvu, npr. RD4 ");
+                Console.WriteLine($"\t Pregled događaja na utakmici određenog kola prvenstva za dva kluba u obliku semafora, npr. D 3 O H 2 ");
+                Console.WriteLine($"\t Dodavanje podataka za utakmice u prvenstvu, npr. NU DZ_2_utakmice_1.csv  ");
+                Console.WriteLine($"\t Dodavanje podataka za za sastave utakmica u prvenstvu, npr. NS DZ_2_ sastavi_utakmica_5.csv  ");
+                Console.WriteLine($"\t Dodavanje podataka za za događaje na utakmicama u prvenstvu, npr. ND DZ_2_ dogadaji_7.csv  ");
                 Console.WriteLine("0 - Izlaz ");
                 Zapisnik.Ispis(Zapisnik.INFO, new string('=', 120));
                 Console.WriteLine("Odaberite opciju unosa ili ugasite program: ");
@@ -101,7 +105,16 @@ namespace kmaodus_zadaca_2
                 if (odabir == "0") break;
 
                 var aktivnostManager = AktivnostManager.DajInstancu(BazaPodataka.DajInstancu());
-                aktivnostManager.IzvrsiAktivnosti(odabir);
+                if (RegexHelper.ProvjeriAktivnost_NU(odabir) || 
+                    RegexHelper.ProvjeriAktivnost_NS(odabir) || 
+                    RegexHelper.ProvjeriAktivnost_ND(odabir)) 
+                {
+                    aktivnostManager.IzvrsiOpcionalneAktivnosti(odabir);
+                }
+                else
+                {
+                    aktivnostManager.IzvrsiAktivnosti(odabir);
+                }
 
             } while (true);
 

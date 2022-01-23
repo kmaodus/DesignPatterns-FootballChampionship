@@ -60,6 +60,22 @@ namespace kmaodus_zadaca_2.Alati
         {
             Prvenstvo.PregledRezultataUtakmicaZaKlubNakonKola(klub, kolo);
         }
+
+        public void AktivnostDodavanjeUtakmica(string datoteka)
+        {
+
+        }
+
+        public void AktivnostDodavanjeSastava(string datoteka)
+        {
+
+        }
+
+        public void AktivnostDodavanjeDogađaja(string datoteka)
+        {
+
+        }
+
         #endregion
 
         public void IzvrsiAktivnosti(string unos)
@@ -115,6 +131,11 @@ namespace kmaodus_zadaca_2.Alati
                     Zapisnik.Ispis(Zapisnik.GRESKA, $"\n[GRESKA] Neispravan unos, provjerite upisanu oznaku!");
                     break;
             }
+        }
+
+        public void IzvrsiOpcionalneAktivnosti(string unos)
+        {
+            
         }
     }
 }
