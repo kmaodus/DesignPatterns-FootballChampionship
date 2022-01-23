@@ -51,15 +51,15 @@ namespace kmaodus_zadaca_2
                 var loaderKlubova = podaciLoaderFactory.DohvatiKlubLoader();
                 bazaPodataka.Klubovi = loaderKlubova.UcitajPodatke(redoviKlubovi);
 
-                List<string> redoviUtakmice = posrednik.DohvatiKlubove(datUtakmice);
+                List<string> redoviUtakmice = posrednik.DohvatiUtakmice(datUtakmice);
                 var loaderUtakmica = podaciLoaderFactory.DohvatiUtakmiceLoader();
                 bazaPodataka.Utakmice = loaderUtakmica.UcitajPodatke(redoviUtakmice);
 
-                List<string> redoviSastaviUtakmice = posrednik.DohvatiKlubove(datUtakmice);
+                List<string> redoviSastaviUtakmice = posrednik.DohvatiSastaveUtakmica(datUtakmice);
                 var loaderSastaviUtakmica = podaciLoaderFactory.DohvatiSastavUtakmicaLoader();
                 bazaPodataka.SastaviUtakmica = loaderSastaviUtakmica.UcitajPodatke(redoviSastaviUtakmice);
 
-                List<string> redoviDogadaja = posrednik.DohvatiKlubove(datUtakmice);
+                List<string> redoviDogadaja = posrednik.DohvatiDogadaje(datUtakmice);
                 var loaderDogadaja = podaciLoaderFactory.DohvatiDogadajLoader();
                 bazaPodataka.Dogadaji = loaderDogadaja.UcitajPodatke(redoviDogadaja);
 

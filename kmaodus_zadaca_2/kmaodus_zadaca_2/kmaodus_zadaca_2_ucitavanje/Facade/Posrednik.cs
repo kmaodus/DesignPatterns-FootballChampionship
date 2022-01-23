@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace kmaodus_zadaca_2_ucitavanje.Facade
 {
@@ -11,7 +12,7 @@ namespace kmaodus_zadaca_2_ucitavanje.Facade
         private UtakmicaReader UtakmicaReader { get; set; }
 
 
-        public Posrednik() 
+        public Posrednik()
         {
             IgracReader = new IgracReader();
             DogadajReader = new DogadajReader();
@@ -23,29 +24,74 @@ namespace kmaodus_zadaca_2_ucitavanje.Facade
 
         public List<string> DohvatiIgrace(string izvornaDatoteka)
         {
-            return IgracReader.DohvatiSve(izvornaDatoteka);
+            if (File.Exists(izvornaDatoteka))
+            {
+                Zapisnik2.Ispis(Zapisnik2.OBAVIJEST, $"=== Ucitavanje datoteke igraca - {izvornaDatoteka} ===");
+                return IgracReader.DohvatiSve(izvornaDatoteka);
+            }
+            else
+            {
+                Zapisnik2.Ispis(Zapisnik2.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
+                return null;
+            }
         }
 
         public List<string> DohvatiKlubove(string izvornaDatoteka)
         {
-            return KlubReader.DohvatiSve(izvornaDatoteka);
+            if (File.Exists(izvornaDatoteka))
+            {
+                Zapisnik2.Ispis(Zapisnik2.OBAVIJEST, $"=== Ucitavanje datoteke klubova - {izvornaDatoteka} ===");
+                return KlubReader.DohvatiSve(izvornaDatoteka);
+            }
+            else
+            {
+                Zapisnik2.Ispis(Zapisnik2.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
+                return null;
+            }
         }
 
         public List<string> DohvatiUtakmice(string izvornaDatoteka)
         {
-            return UtakmicaReader.DohvatiSve(izvornaDatoteka);
+            if (File.Exists(izvornaDatoteka))
+            {
+                Zapisnik2.Ispis(Zapisnik2.OBAVIJEST, $"=== Ucitavanje datoteke utakmica - {izvornaDatoteka} ===");
+                return UtakmicaReader.DohvatiSve(izvornaDatoteka);
+            }
+            else
+            {
+                Zapisnik2.Ispis(Zapisnik2.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
+                return null;
+            }
         }
 
         public List<string> DohvatiDogadaje(string izvornaDatoteka)
         {
-            return DogadajReader.DohvatiSve(izvornaDatoteka);
+            if (File.Exists(izvornaDatoteka))
+            {
+                Zapisnik2.Ispis(Zapisnik2.OBAVIJEST, $"=== Ucitavanje datoteke dogadaja - {izvornaDatoteka} ===");
+                return DogadajReader.DohvatiSve(izvornaDatoteka);
+            }
+            else
+            {
+                Zapisnik2.Ispis(Zapisnik2.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
+                return null;
+            }
         }
 
         public List<string> DohvatiSastaveUtakmica(string izvornaDatoteka)
         {
-            return SastaviUtakmicaReader.DohvatiSve(izvornaDatoteka);
+            if (File.Exists(izvornaDatoteka))
+            {
+                Zapisnik2.Ispis(Zapisnik2.OBAVIJEST, $"=== Ucitavanje datoteke sastava utakmica - {izvornaDatoteka} ===");
+                return SastaviUtakmicaReader.DohvatiSve(izvornaDatoteka);
+            }
+            else
+            {
+                Zapisnik2.Ispis(Zapisnik2.GRESKA, $"\t[Greska] Ne mogu otvoriti datoteku / datoteka ne postoji --> {izvornaDatoteka} ");
+                return null;
+            }
         }
 
-        
+
     }
 }

@@ -53,6 +53,12 @@
     <Compile Include="Alati\Zapisnik.cs" />
     <Compile Include="Apstrakcije\IPodaciLoader.cs" />
     <Compile Include="Builder\UtakmicaPotpunoBuilder.cs" />
+    <Compile Include="Decorator\Decorator.cs" />
+    <Compile Include="Decorator\IKomponenta.cs" />
+    <Compile Include="Decorator\PregledKartonaDecorator.cs" />
+    <Compile Include="Decorator\PregledLjestviceDecorator.cs" />
+    <Compile Include="Decorator\PregledRezultataKlubaDecorator.cs" />
+    <Compile Include="Decorator\PregledStrijelacaDecorator.cs" />
     <Compile Include="Entiteti\Dogadaj.cs" />
     <Compile Include="Entiteti\Enums\OznakeDogadaja.cs" />
     <Compile Include="Entiteti\Enums\PozicijeIgraca.cs" />
@@ -96,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Composite\" />
-    <Folder Include="Decorator\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

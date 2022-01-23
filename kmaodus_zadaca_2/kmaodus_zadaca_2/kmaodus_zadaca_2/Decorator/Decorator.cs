@@ -1,0 +1,37 @@
+﻿using System.Collections.Generic;
+
+namespace kmaodus_zadaca_2.Decorator
+{
+    abstract class Decorator : IKomponenta
+    {
+        protected IKomponenta komponenta;
+        public Decorator(IKomponenta c)
+        {
+            this.komponenta = c;
+        }
+
+        public override void Prikazi()
+        {
+            komponenta.Prikazi();
+        }
+        public override void Dodaj(IKomponenta dijete)
+        {
+            this.komponenta.Dodaj(dijete);
+
+        }
+        public override void Ukloni(IKomponenta dijete)
+        {
+            this.komponenta.GetChildren().Remove(dijete);
+        }
+
+        public override IKomponenta GetChild(int index)
+        {
+            return this.komponenta.GetChild(index);
+        }
+
+        public override List<IKomponenta> GetChildren()
+        {
+            return this.komponenta.GetChildren();
+        }
+    }
+}
