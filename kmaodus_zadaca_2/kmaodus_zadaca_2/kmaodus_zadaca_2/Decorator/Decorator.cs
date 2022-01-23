@@ -4,7 +4,12 @@ namespace kmaodus_zadaca_2.Decorator
 {
     abstract class Decorator : IKomponenta
     {
+        protected const int SIRINA_TABLICE = 150;
+        protected const int SIRINA_TABLICE_STRIJELACA = 125;
+        protected const int SIRINA_TABLICE_REZULTATA = 101;
+
         protected IKomponenta komponenta;
+
         public Decorator(IKomponenta c)
         {
             this.komponenta = c;

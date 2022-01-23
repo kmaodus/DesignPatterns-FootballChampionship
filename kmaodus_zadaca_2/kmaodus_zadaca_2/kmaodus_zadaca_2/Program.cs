@@ -12,16 +12,16 @@ namespace kmaodus_zadaca_2
     {
         static void Main(string[] args)
         {
-            #if DEBUG
-            // args za debug
-            //args = new[] {
-            //                "-i", "../../TestneDatoteke/DZ2_igraci.csv",
-            //                "-s", "../../TestneDatoteke/DZ2_sastavi_utakmica.csv",
-            //                "-u", "../../TestneDatoteke/DZ2_utakmice.csv",
-            //                "-k", "../../TestneDatoteke/DZ2_klubovi.csv",
-            //                "-d", "../../TestneDatoteke/DZ2_dogadaji.csv"
-            //            };
-            #endif
+#if DEBUG
+            //args za debug
+            args = new[] {
+                            "-i", "../../TestneDatoteke/DZ2_igraci.csv",
+                            "-s", "../../TestneDatoteke/DZ2_sastavi_utakmica.csv",
+                            "-u", "../../TestneDatoteke/DZ2_utakmice.csv",
+                            "-k", "../../TestneDatoteke/DZ2_klubovi.csv",
+                            "-d", "../../TestneDatoteke/DZ2_dogadaji.csv"
+                       };
+#endif
 
             Console.SetWindowSize(150, 45);
 
@@ -43,11 +43,11 @@ namespace kmaodus_zadaca_2
 
                 Posrednik posrednik = new Posrednik();
 
-                List<string> redoviIgraci =  posrednik.DohvatiIgrace(datIgraci);
+                List<string> redoviIgraci = posrednik.DohvatiIgrace(datIgraci);
                 var loaderIgraca = podaciLoaderFactory.DohvatiIgracLoader();
                 bazaPodataka.Igraci = loaderIgraca.UcitajPodatke(redoviIgraci);
 
-                List<string> redoviKlubovi =  posrednik.DohvatiKlubove(datKlubovi);
+                List<string> redoviKlubovi = posrednik.DohvatiKlubove(datKlubovi);
                 var loaderKlubova = podaciLoaderFactory.DohvatiKlubLoader();
                 bazaPodataka.Klubovi = loaderKlubova.UcitajPodatke(redoviKlubovi);
 
@@ -55,11 +55,11 @@ namespace kmaodus_zadaca_2
                 var loaderUtakmica = podaciLoaderFactory.DohvatiUtakmiceLoader();
                 bazaPodataka.Utakmice = loaderUtakmica.UcitajPodatke(redoviUtakmice);
 
-                List<string> redoviSastaviUtakmice = posrednik.DohvatiSastaveUtakmica(datUtakmice);
+                List<string> redoviSastaviUtakmice = posrednik.DohvatiSastaveUtakmica(datSastaviUtakmica);
                 var loaderSastaviUtakmica = podaciLoaderFactory.DohvatiSastavUtakmicaLoader();
                 bazaPodataka.SastaviUtakmica = loaderSastaviUtakmica.UcitajPodatke(redoviSastaviUtakmice);
 
-                List<string> redoviDogadaja = posrednik.DohvatiDogadaje(datUtakmice);
+                List<string> redoviDogadaja = posrednik.DohvatiDogadaje(datDogadaji);
                 var loaderDogadaja = podaciLoaderFactory.DohvatiDogadajLoader();
                 bazaPodataka.Dogadaji = loaderDogadaja.UcitajPodatke(redoviDogadaja);
 
