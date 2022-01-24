@@ -1,6 +1,8 @@
 ﻿using kmaodus_zadaca_2.Builder;
 using kmaodus_zadaca_2.Entiteti;
+using kmaodus_zadaca_2.FactoryMethod;
 using kmaodus_zadaca_2.Singleton;
+using kmaodus_zadaca_2_ucitavanje.Facade;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,15 +31,10 @@ namespace kmaodus_zadaca_2.Alati
             _bazaPodataka = baza;
             utakmicePotpuno = new List<UtakmicaPotpuno>();
 
-            UtakmicaPotpunoBuilder utakmicaPotpunoBuilder = new UtakmicaPotpunoBuilder();
-
-            foreach (var utakmica in _bazaPodataka.Utakmice)
-            {
-                var temp = utakmicaPotpunoBuilder.KreirajUtakmicaPotpuno(_bazaPodataka, utakmica.Broj);
-                utakmicePotpuno.Add(temp);
-            }
+            RekreirajUtakmicePotpuno();
 
             Prvenstvo = Prvenstvo.DajInstancu(utakmicePotpuno, _bazaPodataka.Klubovi, _bazaPodataka.Igraci);
+
         }
 
 
@@ -61,20 +58,66 @@ namespace kmaodus_zadaca_2.Alati
             Prvenstvo.PregledRezultataUtakmicaZaKlubNakonKola(klub, kolo);
         }
 
-        public void AktivnostDodavanjeUtakmica(string datoteka)
+        public void AktivnostDodavanjeUtakmica(string unos)
         {
+            string[] rijeci = unos.Split(' ');
+
+            PodaciLoaderFactory podaciLoaderFactory = new PodaciLoaderFactory();
+            Posrednik posrednik = new Posrednik();
+
+            List<string> redoviUtakmice = posrednik.DohvatiUtakmice(rijeci[1]);
+            var loaderUtakmica = podaciLoaderFactory.DohvatiUtakmiceLoader();
+            _bazaPodataka.Utakmice = loaderUtakmica.UcitajPodatke(redoviUtakmice);
+
+            RekreirajUtakmicePotpuno();
+            Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
 
         }
 
-        public void AktivnostDodavanjeSastava(string datoteka)
+        public void AktivnostDodavanjeSastava(string unos)
         {
+            string[] rijeci = unos.Split(' ');
 
+            PodaciLoaderFactory podaciLoaderFactory = new PodaciLoaderFactory();
+            Posrednik posrednik = new Posrednik();
+
+            List<string> redoviSastaviUtakmice = posrednik.DohvatiSastaveUtakmica(rijeci[1]);
+            var loaderSastaviUtakmica = podaciLoaderFactory.DohvatiSastavUtakmicaLoader();
+            _bazaPodataka.SastaviUtakmica = loaderSastaviUtakmica.UcitajPodatke(redoviSastaviUtakmice);
+
+            RekreirajUtakmicePotpuno();
+            Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
         }
 
-        public void AktivnostDodavanjeDogađaja(string datoteka)
+        public void AktivnostDodavanjeDogađaja(string unos)
         {
+            string[] rijeci = unos.Split(' ');
 
+            PodaciLoaderFactory podaciLoaderFactory = new PodaciLoaderFactory();
+            Posrednik posrednik = new Posrednik();
+
+            List<string> redoviDogadaja = posrednik.DohvatiDogadaje(rijeci[1]);
+            var loaderDogadaja = podaciLoaderFactory.DohvatiDogadajLoader();
+            _bazaPodataka.Dogadaji = loaderDogadaja.UcitajPodatke(redoviDogadaja);
+
+            RekreirajUtakmicePotpuno();
+
+            Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
         }
+
+        public void RekreirajUtakmicePotpuno()
+        {
+            //utakmicePotpuno.Clear();
+
+            UtakmicaPotpunoBuilder utakmicaPotpunoBuilder = new UtakmicaPotpunoBuilder();
+
+            foreach (var utakmica in _bazaPodataka.Utakmice)
+            {
+                var temp = utakmicaPotpunoBuilder.KreirajUtakmicaPotpuno(_bazaPodataka, utakmica.Broj);
+                utakmicePotpuno.Add(temp);
+            }
+        }
+
 
         #endregion
 
@@ -133,9 +176,5 @@ namespace kmaodus_zadaca_2.Alati
             }
         }
 
-        public void IzvrsiOpcionalneAktivnosti(string unos)
-        {
-            
-        }
     }
 }

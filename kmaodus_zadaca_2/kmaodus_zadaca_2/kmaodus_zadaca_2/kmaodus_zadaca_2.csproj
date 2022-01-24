@@ -91,7 +91,9 @@
     <None Include="TestneDatoteke\DZ2_igraci.csv" />
     <None Include="TestneDatoteke\DZ2_klubovi.csv" />
     <None Include="TestneDatoteke\DZ2_sastavi_utakmica.csv" />
+    <None Include="TestneDatoteke\DZ2_sastavi_utakmica_1.csv" />
     <None Include="TestneDatoteke\DZ2_utakmice.csv" />
+    <None Include="TestneDatoteke\DZ2_utakmice_1.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\kmaodus_zadaca_2_ucitavanje\kmaodus_zadaca_2_ucitavanje.csproj">

@@ -15,10 +15,10 @@ namespace kmaodus_zadaca_2.Alati
         const string AKTIVNOST_2 = @"^(\s*)[sS]{1}(\s*)\d+(\s*)$";
         const string AKTIVNOST_3 = @"^(\s*)[kK]{1}(\s*)\d+(\s*)$";
         const string AKTIVNOST_4 = @"^(\s*)[rR]{1}(\s*)[A-Za-z\u0106-\u01C4]{1,3}(\s*)\d+(\s*)$";
-        const string AKTIVNOST_5 = @"";
-        const string AKTIVNOST_NU = @"";
-        const string AKTIVNOST_NS = @"";
-        const string AKTIVNOST_ND = @"";
+        const string AKTIVNOST_5 = @"^(\s*)[dD]{1}\s*[0-9]{1,3}(\s*)[A-Za-z\u0106-\u01C4]{1,2}(\s*)[A-Za-z\u0106-\u01C4]{1,3}(\s*)[0-9]{1,3}(\s*)$";
+        const string AKTIVNOST_NU = @"^(\s*)[nN]{1}\s*[uU]{1}(\s*).+(\s*)$";
+        const string AKTIVNOST_NS = @"^(\s*)[nN]{1}\s*[sS]{1}(\s*).+(\s*)$";
+        const string AKTIVNOST_ND = @"^(\s*)[nN]{1}\s*[dD]{1}(\s*).+(\s*)$";
 
         public static bool ProvjeriAktivnost_NU(string unos)
         {
@@ -88,6 +88,11 @@ namespace kmaodus_zadaca_2.Alati
         public static bool ProvjeriAktivnost4(string unos)
         {
             Match m = Regex.Match(unos, AKTIVNOST_4);
+            return m.Success;
+        }
+        public static bool ProvjeriAktivnost5(string unos)
+        {
+            Match m = Regex.Match(unos, AKTIVNOST_5);
             return m.Success;
         }
     }

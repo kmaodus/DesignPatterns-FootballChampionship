@@ -84,37 +84,46 @@ namespace kmaodus_zadaca_2
             {
                 Zapisnik.Ispis(Zapisnik.INFO, new string('=', 120));
                 Console.WriteLine("DOSTUPNE OPCIJE: ");
-                Console.WriteLine($"\t Pregled ljestvice nakon određenog kola prvenstva ili za sva odigrana kola u prvenstvu, npr. T5 ");
-                Console.WriteLine($"\t Pregled ljestvice strijelaca nakon određenog kola prvenstva ili za sva odigrana kola u prvenstvu, npr. S3 ");
-                Console.WriteLine($"\t Pregled ljestvice kartona po klubovima nakon određenog kola prvenstva ili za odigrana kola u prvenstvu, npr. K2 ");
-                Console.WriteLine($"\t Pregled rezultata utakmica za klub nakon određenog kola prvenstva ili za odigrana kola u prvenstvu, npr. RD4 ");
-                Console.WriteLine($"\t Pregled događaja na utakmici određenog kola prvenstva za dva kluba u obliku semafora, npr. D 3 O H 2 ");
-                Console.WriteLine($"\t Dodavanje podataka za utakmice u prvenstvu, npr. NU DZ_2_utakmice_1.csv  ");
-                Console.WriteLine($"\t Dodavanje podataka za za sastave utakmica u prvenstvu, npr. NS DZ_2_ sastavi_utakmica_5.csv  ");
-                Console.WriteLine($"\t Dodavanje podataka za za događaje na utakmicama u prvenstvu, npr. ND DZ_2_ dogadaji_7.csv  ");
+                Console.WriteLine($"\t Pregled ljestvice nakon određenog kola prvenstva ili za sva odigrana kola u prvenstvu, npr. T5");
+                Console.WriteLine($"\t Pregled ljestvice strijelaca nakon određenog kola prvenstva ili za sva odigrana kola u prvenstvu, npr. S3");
+                Console.WriteLine($"\t Pregled ljestvice kartona po klubovima nakon određenog kola prvenstva ili za odigrana kola u prvenstvu, npr. K2");
+                Console.WriteLine($"\t Pregled rezultata utakmica za klub nakon određenog kola prvenstva ili za odigrana kola u prvenstvu, npr. RD4");
+                Console.WriteLine($"\t Pregled događaja na utakmici određenog kola prvenstva za dva kluba u obliku semafora, npr. D 3 O H 2");
+                Console.WriteLine($"\t Dodavanje podataka za utakmice u prvenstvu, npr. NU DZ_2_utakmice_1.csv");
+                Console.WriteLine($"\t Dodavanje podataka za za sastave utakmica u prvenstvu, npr. NS DZ_2_ sastavi_utakmica_5.csv");
+                Console.WriteLine($"\t Dodavanje podataka za za događaje na utakmicama u prvenstvu, npr. ND DZ_2_ dogadaji_7.csv");
                 Console.WriteLine("0 - Izlaz ");
                 Zapisnik.Ispis(Zapisnik.INFO, new string('=', 120));
                 Console.WriteLine("Odaberite opciju unosa ili ugasite program: ");
 
-                odabir = Console.ReadLine().ToString().ToUpper();
+                odabir = Console.ReadLine().ToString();//.ToUpper();
                 if (String.IsNullOrEmpty(odabir))
                 {
                     Zapisnik.Ispis(Zapisnik.UPOZORENJE, $"\n[UPOZORENJE] Kriva naredba! Pokušajte ponovno..");
                     continue;
                 }
+
                 if (odabir == "0") break;
 
                 var aktivnostManager = AktivnostManager.DajInstancu(BazaPodataka.DajInstancu());
-                if (RegexHelper.ProvjeriAktivnost_NU(odabir) || 
-                    RegexHelper.ProvjeriAktivnost_NS(odabir) || 
-                    RegexHelper.ProvjeriAktivnost_ND(odabir)) 
+
+                if (RegexHelper.ProvjeriAktivnost_NU(odabir))
                 {
-                    aktivnostManager.IzvrsiOpcionalneAktivnosti(odabir);
+                    aktivnostManager.AktivnostDodavanjeUtakmica(odabir);
+                }
+                else if (RegexHelper.ProvjeriAktivnost_NS(odabir))
+                {
+                    aktivnostManager.AktivnostDodavanjeSastava(odabir);
+                }
+                else if (RegexHelper.ProvjeriAktivnost_ND(odabir))
+                {
+                    aktivnostManager.AktivnostDodavanjeDogađaja(odabir);
                 }
                 else
                 {
                     aktivnostManager.IzvrsiAktivnosti(odabir);
                 }
+
 
             } while (true);
 
