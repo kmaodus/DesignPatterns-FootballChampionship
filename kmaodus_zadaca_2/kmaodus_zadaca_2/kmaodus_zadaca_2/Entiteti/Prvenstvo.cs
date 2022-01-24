@@ -106,6 +106,20 @@ namespace kmaodus_zadaca_2.Entiteti
                 .ThenByDescending(x => x.BrojPobjeda)
                 .ToList();
 
+            //ListaStanjeKlubaNaLjestvici.Select(x => x.BrojPobjeda).Sum();
+            int sumBrojPobjeda = 0;
+            int sumBrojNerijesenih = 0;
+            int sumDaniGolovi = 0;
+            int sumPrimljeniGolovi = 0;
+
+            foreach (var item in ListaStanjeKlubaNaLjestvici)
+            {
+                sumBrojPobjeda += item.BrojPobjeda;
+                sumBrojNerijesenih += item.BrojNeriješenih;
+                sumDaniGolovi += item.BrojDanihGolova;
+                sumPrimljeniGolovi += item.BrojPrimljenihGolova;
+            }
+
             // ispis tablice
             IspisTablice printer = new IspisTablice();
             printer.IspisiPregledLjestviceKlubovaNakonKola(ListaStanjeKlubaNaLjestvici);

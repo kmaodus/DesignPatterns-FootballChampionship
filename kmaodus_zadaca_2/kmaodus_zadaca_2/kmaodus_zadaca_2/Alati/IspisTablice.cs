@@ -30,6 +30,11 @@ namespace kmaodus_zadaca_2.Alati
                     klub.BrojPrimljenihGolova, klub.RazlikaGolova, klub.BrojBodova));
                 Console.WriteLine(new string('-', SIRINA_TABLICE_LJESTVICE));
             }
+            stanjeKlubaNaLjestvici.Select(x => x.BrojPobjeda).Sum();
+
+            Console.WriteLine(new string('-', SIRINA_TABLICE_LJESTVICE));
+            Console.WriteLine(String.Format("| {0, -26}  {1, -20}  {2, -15} | {3, -8} | {4, -8} | {5, -5} | {6, -8} | {7, -10} | {8, -10} | {9, -19} |\n", "SUM:", "", "", stanjeKlubaNaLjestvici.Select(x => x.BrojPobjeda).Sum(), stanjeKlubaNaLjestvici.Select(x => x.BrojNeriješenih).Sum(), stanjeKlubaNaLjestvici.Select(x => x.BrojPoraza).Sum(), stanjeKlubaNaLjestvici.Select(x => x.BrojDanihGolova).Sum(), stanjeKlubaNaLjestvici.Select(x => x.BrojPrimljenihGolova).Sum(), stanjeKlubaNaLjestvici.Select(x => x.RazlikaGolova).Sum(), stanjeKlubaNaLjestvici.Select(x => x.BrojBodova).Sum()));
+
         }
 
         public void IspisiPregledStrijelacaNakonKola(List<StanjeStrijelacaNaLjestvici> stanjeStrijelacaNaLjestvici)

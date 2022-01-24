@@ -130,12 +130,20 @@ namespace kmaodus_zadaca_2.Alati
             int brojKola;
 
             var poljeZnakova = unos.Trim().ToCharArray();
-
-            if (poljeZnakova.Length == 3)
+            var splitZnakova = unos.Split(' ');
+            // R SP [kolo]
+            // R D [kolo]
+            if (splitZnakova.Length == 2)
             {
                 oznaka = poljeZnakova[0];
-                uneseniKlub = poljeZnakova[1].ToString();
-                brojKola = int.Parse(poljeZnakova[2].ToString());
+                uneseniKlub = splitZnakova[1];
+                brojKola = maxKolo;
+            }
+            else if (splitZnakova.Length == 3)
+            {
+                oznaka = poljeZnakova[0];
+                uneseniKlub = splitZnakova[1];
+                brojKola = int.Parse(splitZnakova[2]);
             }
             else if (poljeZnakova.Length == 2 && int.TryParse(poljeZnakova[1].ToString(), out brojKola))
             {

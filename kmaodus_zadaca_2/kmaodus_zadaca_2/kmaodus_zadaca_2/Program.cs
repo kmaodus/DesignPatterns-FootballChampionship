@@ -14,13 +14,13 @@ namespace kmaodus_zadaca_2
         {
 #if DEBUG
             //args za debug
-            args = new[] {
-                            "-i", "../../TestneDatoteke/DZ2_igraci.csv",
-                            "-s", "../../TestneDatoteke/DZ2_sastavi_utakmica.csv",
-                            "-u", "../../TestneDatoteke/DZ2_utakmice.csv",
-                            "-k", "../../TestneDatoteke/DZ2_klubovi.csv",
-                            "-d", "../../TestneDatoteke/DZ2_dogadaji.csv"
-                       };
+            //args = new[] {
+            //                "-i", "../../TestneDatoteke/DZ2_igraci.csv",
+            //                "-s", "../../TestneDatoteke/DZ2_sastavi_utakmica.csv",
+            //                "-u", "../../TestneDatoteke/DZ2_utakmice.csv",
+            //                "-k", "../../TestneDatoteke/DZ2_klubovi.csv",
+            //                "-d", "../../TestneDatoteke/DZ2_dogadaji.csv"
+            //           };
 #endif
 
             Console.SetWindowSize(150, 45);
