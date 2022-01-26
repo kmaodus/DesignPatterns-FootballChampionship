@@ -12,7 +12,7 @@ namespace kmaodus_zadaca_2.Alati
     {
         private static AktivnostManager _instanca;
 
-        private List<UtakmicaPotpuno> utakmicePotpuno { get; set; } = new List<UtakmicaPotpuno>();
+        //private List<UtakmicaPotpuno> utakmicePotpuno { get; set; } = new List<UtakmicaPotpuno>();
         public Prvenstvo Prvenstvo { get; set; }
 
 
@@ -29,12 +29,11 @@ namespace kmaodus_zadaca_2.Alati
         public AktivnostManager(BazaPodataka baza)
         {
             _bazaPodataka = baza;
-            utakmicePotpuno = new List<UtakmicaPotpuno>();
+            //utakmicePotpuno = new List<UtakmicaPotpuno>();
+
+            Prvenstvo = Prvenstvo.DajInstancu(_bazaPodataka.Klubovi, _bazaPodataka.Igraci);
 
             RekreirajUtakmicePotpuno();
-
-            Prvenstvo = Prvenstvo.DajInstancu(utakmicePotpuno, _bazaPodataka.Klubovi, _bazaPodataka.Igraci);
-
         }
 
 
@@ -57,6 +56,11 @@ namespace kmaodus_zadaca_2.Alati
         {
             Prvenstvo.PregledRezultataUtakmicaZaKlubNakonKola(klub, kolo);
         }
+        public void Aktivnost5(int kolo, string klubDomacin, string klubGost, int sekunde) 
+        {
+            Prvenstvo.PrikaziSemaforUtakmice();
+        }
+
 
         public void AktivnostDodavanjeUtakmica(string unos)
         {
@@ -70,7 +74,7 @@ namespace kmaodus_zadaca_2.Alati
             _bazaPodataka.Utakmice = loaderUtakmica.UcitajPodatke(redoviUtakmice);
 
             RekreirajUtakmicePotpuno();
-            Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
+            //Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
 
         }
 
@@ -86,7 +90,7 @@ namespace kmaodus_zadaca_2.Alati
             _bazaPodataka.SastaviUtakmica = loaderSastaviUtakmica.UcitajPodatke(redoviSastaviUtakmice);
 
             RekreirajUtakmicePotpuno();
-            Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
+            //Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
         }
 
         public void AktivnostDodavanjeDogađaja(string unos)
@@ -102,7 +106,7 @@ namespace kmaodus_zadaca_2.Alati
 
             RekreirajUtakmicePotpuno();
 
-            Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
+            //Prvenstvo.UtakmicePotpuno = utakmicePotpuno;
         }
 
         public void RekreirajUtakmicePotpuno()
@@ -114,7 +118,10 @@ namespace kmaodus_zadaca_2.Alati
             foreach (var utakmica in _bazaPodataka.Utakmice)
             {
                 var temp = utakmicaPotpunoBuilder.KreirajUtakmicaPotpuno(_bazaPodataka, utakmica.Broj);
-                utakmicePotpuno.Add(temp);
+                //utakmicePotpuno.Add(temp);
+
+                //composite metoda
+                Prvenstvo.DodajUtakmicuPotpuno(temp);
             }
         }
 
@@ -123,7 +130,9 @@ namespace kmaodus_zadaca_2.Alati
 
         public void IzvrsiAktivnosti(string unos)
         {
-            int maxKolo = utakmicePotpuno.Max(x => x.Utakmica.Kolo);
+            //int maxKolo = utakmicePotpuno.Max(x => x.Utakmica.Kolo);
+            int maxKolo = Prvenstvo.DohvatiUtakmicePotpuno().Max(x => x.Utakmica.Kolo);
+
 
             char oznaka;
             string uneseniKlub = "";
@@ -133,6 +142,12 @@ namespace kmaodus_zadaca_2.Alati
             var splitZnakova = unos.Split(' ');
             // R SP [kolo]
             // R D [kolo]
+
+            //if (true)
+            //{
+
+            //}else
+
             if (splitZnakova.Length == 2)
             {
                 oznaka = poljeZnakova[0];
@@ -177,6 +192,9 @@ namespace kmaodus_zadaca_2.Alati
                     break;
                 case 'R': //R D 4 
                     Aktivnost4(uneseniKlub, brojKola);
+                    break;
+                case 'D': // D 3 O H 2 
+                    //Aktivnost5();
                     break;
                 default:
                     Zapisnik.Ispis(Zapisnik.GRESKA, $"\n[GRESKA] Neispravan unos, provjerite upisanu oznaku!");

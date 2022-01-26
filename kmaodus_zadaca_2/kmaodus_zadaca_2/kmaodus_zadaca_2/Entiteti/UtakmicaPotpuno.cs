@@ -1,14 +1,17 @@
 ﻿using kmaodus_zadaca_2.Entiteti.Enums;
+using kmaodus_zadaca_2.Observer;
 using System.Collections.Generic;
 
 namespace kmaodus_zadaca_2.Entiteti
 {
-    public class UtakmicaPotpuno
+    public class UtakmicaPotpuno : IObserverSubject
     {
         public Klub KlubDomacin { get; set; } = new Klub();
         public Klub KlubGost { get; set; } = new Klub();
         public Utakmica Utakmica { get; set; }
         public List<Dogadaj> Dogadaji { get; set; } = new List<Dogadaj>();
+
+        private List<IObserver> iobservers = new List<IObserver>();
 
         public int KrajnjiRezultat { get; set; }
 
@@ -163,6 +166,32 @@ namespace kmaodus_zadaca_2.Entiteti
             }
 
             return ukupanBrojCrvenihKartonaGosta;
+        }
+
+        public void Attach(IObserver iobserver)
+        {
+            iobservers.Add(iobserver);
+        }
+
+        public void Dettach(IObserver iobserver)
+        {
+            iobservers.Remove(iobserver);
+        }
+
+        public void Notify(Dogadaj dogadaj)
+        {
+            foreach (var iobserver in iobservers)
+            {
+                iobserver.Update(this, dogadaj);
+            }
+        }
+
+        public void PrikaziLiveUtakmicu() 
+        {
+            foreach (var dogadaj in Dogadaji)
+            {
+                Notify(dogadaj);
+            }
         }
     }
 }

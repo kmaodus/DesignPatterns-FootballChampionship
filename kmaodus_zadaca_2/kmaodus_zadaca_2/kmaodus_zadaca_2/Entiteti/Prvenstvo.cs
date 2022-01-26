@@ -9,7 +9,7 @@ namespace kmaodus_zadaca_2.Entiteti
     {
         private static Prvenstvo _instanca;
 
-        public List<UtakmicaPotpuno> UtakmicePotpuno { get; set; }
+        private List<UtakmicaPotpuno> UtakmicePotpuno { get; set; }
         public List<Klub> SviKlubovi { get; set; }
         public List<Igrac> SviIgraci { get; set; }
 
@@ -19,20 +19,21 @@ namespace kmaodus_zadaca_2.Entiteti
         //private List<StanjeKartonaNaLjestvici> ListaStanjaNaLjestvici { get; set; } = new List<StanjeKartonaNaLjestvici>();
 
 
-        private Prvenstvo(List<UtakmicaPotpuno> utakmicePotpuno, List<Klub> listaKlubova, List<Igrac> listaIgraca)
+        private Prvenstvo(List<Klub> listaKlubova, List<Igrac> listaIgraca)
         {
-            UtakmicePotpuno = utakmicePotpuno;
+            UtakmicePotpuno = new List<UtakmicaPotpuno>();
+            //UtakmicePotpuno = utakmicePotpuno;
             SviKlubovi = listaKlubova;
             SviIgraci = listaIgraca;
         }
 
         public Prvenstvo() { }
 
-        public static Prvenstvo DajInstancu(List<UtakmicaPotpuno> utakmicePotpuno, List<Klub> listaKlubova, List<Igrac> listaIgraca)
+        public static Prvenstvo DajInstancu(List<Klub> listaKlubova, List<Igrac> listaIgraca)
         {
             if (_instanca == null)
             {
-                _instanca = new Prvenstvo(utakmicePotpuno, listaKlubova, listaIgraca);
+                _instanca = new Prvenstvo(listaKlubova, listaIgraca);
             }
             return _instanca;
         }
@@ -48,7 +49,6 @@ namespace kmaodus_zadaca_2.Entiteti
             ListaStanjeKlubaNaLjestvici.Clear();
 
             PopunjavanjeKlubovaNaStanjuLjestvice();
-
 
 
             foreach (var utakmicaPotpuno in UtakmicePotpuno)
@@ -329,5 +329,45 @@ namespace kmaodus_zadaca_2.Entiteti
 
         #endregion
 
+
+        // Composite metode
+        public void DodajUtakmicuPotpuno(UtakmicaPotpuno up) 
+        {
+            UtakmicePotpuno.Add(up);
+        }
+        public void UkloniUtakmicuPotpuno(UtakmicaPotpuno up) 
+        {
+            UtakmicePotpuno.Remove(up);
+        }
+        public List<UtakmicaPotpuno> DohvatiUtakmicePotpuno()
+        {
+            return UtakmicePotpuno;
+        }
+
+        public void DodajKlub(Klub klub)
+        {
+            SviKlubovi.Add(klub);
+        }
+        public void UkloniKlub(Klub klub) 
+        {
+            SviKlubovi.Remove(klub);
+        }
+        public List<Klub> DohvatiKlubove()
+        {
+            return SviKlubovi;
+        }
+
+        public void DodajIgraca(Igrac igrac)
+        {
+            SviIgraci.Add(igrac);
+        }
+        public void UkloniIgraca(Igrac igrac)
+        {
+            SviIgraci.Remove(igrac);
+        }
+        public List<Igrac> DohvatiIgrace()
+        {
+            return SviIgraci;
+        }
     }
 }

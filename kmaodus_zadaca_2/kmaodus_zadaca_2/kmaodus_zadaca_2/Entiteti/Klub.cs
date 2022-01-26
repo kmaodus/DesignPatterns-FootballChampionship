@@ -9,8 +9,8 @@ namespace kmaodus_zadaca_2.Entiteti
 
         public string ID_Klub { get; set; }
         public string Naziv { get; set; }
-        public Trener Trener { get; set; }
-        public List<Igrac> Igraci { get; set; }
+        private Trener Trener { get; set; }
+        private List<Igrac> Igraci { get; set; }
 
         public Klub(string idKlub, string naziv, string trener)
         {
@@ -22,5 +22,29 @@ namespace kmaodus_zadaca_2.Entiteti
 
 
         public Klub() { }
+
+
+        public void DodajIgraca(Igrac igrac) { }
+        public void UkloniIgraca(Igrac igrac) { }
+        public List<Igrac> DohvatiIgrace()
+        {
+            return Igraci;
+        }
+
+
+        public void DodajTrenera(Trener trener) { }
+        public void UkloniTrenera(Trener trener) { }
+        public Trener DohvatiTrenera()
+        {
+            if (Trener != null)
+            {
+                return Trener;
+            }
+            else
+            {
+                return new Trener("nedodijeljen");
+            }
+        }
+
     }
 }

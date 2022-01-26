@@ -26,7 +26,7 @@ namespace kmaodus_zadaca_2.Builder
             {
                 if (zapis.Broj == utakmicaPotpuno.Utakmica.Broj && zapis.Klub == utakmicaPotpuno.KlubDomacin.ID_Klub)
                 {
-                    sastavDomacin.Igraci.Add(bazaPodataka.Igraci.Where(x => x.ID_Klub == zapis.Klub && x.ImePrezime == zapis.Igrac).FirstOrDefault());
+                    sastavDomacin.DodajIgraca(bazaPodataka.Igraci.Where(x => x.ID_Klub == zapis.Klub && x.ImePrezime == zapis.Igrac).FirstOrDefault());
                 }
             }
 
@@ -34,7 +34,7 @@ namespace kmaodus_zadaca_2.Builder
             {
                 if (zapis.Broj == utakmicaPotpuno.Utakmica.Broj && zapis.Klub == utakmicaPotpuno.KlubGost.ID_Klub)
                 {
-                    sastavGost.Igraci.Add(bazaPodataka.Igraci.Where(x => x.ID_Klub == zapis.Klub && x.ImePrezime == zapis.Igrac).FirstOrDefault());
+                    sastavGost.DodajIgraca(bazaPodataka.Igraci.Where(x => x.ID_Klub == zapis.Klub && x.ImePrezime == zapis.Igrac).FirstOrDefault());
                 }
             }
 

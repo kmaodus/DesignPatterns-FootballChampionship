@@ -26,7 +26,7 @@ namespace kmaodus_zadaca_2.Alati
             foreach (var klub in stanjeKlubaNaLjestvici)
             {
                 Console.WriteLine(String.Format("| {0, -20} | {1, -19} |  {2, -19} | {3, -8} | {4, -10} | {5, -5} | {6, -11} | {7, -16} | {8, -14} | {9, -19} |",
-                    klub.Klub.Naziv, klub.Klub.Trener.ImePrezime, klub.BrojOdigranihKola, klub.BrojPobjeda, klub.BrojNeriješenih, klub.BrojPoraza, klub.BrojDanihGolova,
+                    klub.Klub.Naziv, klub.Klub.DohvatiTrenera().ImePrezime, klub.BrojOdigranihKola, klub.BrojPobjeda, klub.BrojNeriješenih, klub.BrojPoraza, klub.BrojDanihGolova,
                     klub.BrojPrimljenihGolova, klub.RazlikaGolova, klub.BrojBodova));
                 Console.WriteLine(new string('-', SIRINA_TABLICE_LJESTVICE));
             }
@@ -89,5 +89,7 @@ namespace kmaodus_zadaca_2.Alati
             }
 
         }
+
+
     }
 }
