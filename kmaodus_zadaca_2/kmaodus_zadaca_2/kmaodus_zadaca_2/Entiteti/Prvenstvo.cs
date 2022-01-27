@@ -1,5 +1,6 @@
 ﻿using kmaodus_zadaca_2.Alati;
 using kmaodus_zadaca_2.Entiteti.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -124,6 +125,7 @@ namespace kmaodus_zadaca_2.Entiteti
             IspisTablice printer = new IspisTablice();
             printer.IspisiPregledLjestviceKlubovaNakonKola(ListaStanjeKlubaNaLjestvici);
         }
+
 
         private int OdrediPobjednika(UtakmicaPotpuno utakmicaPotpuno)
         {

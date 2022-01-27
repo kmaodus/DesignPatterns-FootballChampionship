@@ -3,16 +3,19 @@ using kmaodus_zadaca_2.Entiteti.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace kmaodus_zadaca_2.Observer
 {
     public class Semafor : IObserver
     {
+        protected const int SIRINA_TABLICE = 167;
+
         private string MinutaDogadaja { get; set; }
         private string KlubDomacinNaziv { get; set; }
         private string KlubGostNaziv { get; set; }
+
+        private string KlubDomacinNazivZaIspis { get; set; }
+        private string KlubGostNazivZaIspis { get; set; }
 
         private int GoloviDomacin { get; set; } = 0;
         private int GoloviGost { get; set; } = 0;
@@ -34,9 +37,11 @@ namespace kmaodus_zadaca_2.Observer
         private void PromijeniStanjeSemafora(UtakmicaPotpuno utakmicaPotpuno, Dogadaj dogadaj)
         {
             MinutaDogadaja = dogadaj.Minuta;
-            KlubDomacinNaziv = utakmicaPotpuno.KlubDomacin.Naziv;
-            KlubGostNaziv = utakmicaPotpuno.KlubGost.Naziv;
+            KlubDomacinNaziv = utakmicaPotpuno.KlubDomacin.ID_Klub;
+            KlubGostNaziv = utakmicaPotpuno.KlubGost.ID_Klub;
 
+            KlubDomacinNazivZaIspis = utakmicaPotpuno.KlubDomacin.Naziv;
+            KlubGostNazivZaIspis = utakmicaPotpuno.KlubGost.Naziv;
 
 
             //logika 
@@ -118,38 +123,50 @@ namespace kmaodus_zadaca_2.Observer
 
         public void PrikaziSemafor()
         {
-            // D kolo klub1 klub2 sekundi
-            // D  2     D    H       2
-            Console.WriteLine(MinutaDogadaja);
-            Console.WriteLine();
-            Console.WriteLine($"Domacin: {KlubDomacinNaziv}");
-            Console.WriteLine($"Gost: {KlubGostNaziv}");
 
+            Console.WriteLine("\n\n\n\n");
+            Console.WriteLine("Minuta: " + MinutaDogadaja);
 
-            // Broj kola | Datum i vrijeme | Klub domacin | Rezultat | Klub gost 
-            //     1.    | 17.7.2021 21:00 |     Rijeka   | 2 - 0    |  Gorica 
+            Console.WriteLine(new string('-', SIRINA_TABLICE));
             Console.WriteLine(String.Format("| {0, -80} | {1, -80} | ", "Klub domacin", "Klub gost"));
+            Console.WriteLine(String.Format("| {0, -80} | {1, -80} | ", "            ", "         "));
+            Console.WriteLine(String.Format("| {0, -80} | {1, -80} | ", KlubDomacinNazivZaIspis, KlubGostNazivZaIspis));
 
             // https://stackoverflow.com/questions/8518761/how-to-iterate-through-two-collections-of-the-same-length-using-a-single-foreach
             var spojeniStrijelci = StrijelciDomacin.Zip(StrijelciGost, (d, g) => new { strijelacDomacin = d, strijelacGost = g });
 
-            foreach (var zapis in spojeniStrijelci)
+            Console.WriteLine(String.Format("| {0, -80} | {1, -80} | ", GoloviDomacin, GoloviGost));
+
+            using (var EnumeratorDomacini = StrijelciDomacin.GetEnumerator())
+            using (var EnumeratorGosti = StrijelciGost.GetEnumerator())
             {
-                var tempStrijelacDomacin = "";
-                var tempStrijelacGost = "";
 
-                if (zapis.strijelacDomacin != null)
+                while (EnumeratorDomacini.MoveNext() || EnumeratorGosti.MoveNext())
                 {
-                    tempStrijelacDomacin = zapis.strijelacDomacin;
+                    string strijelacDomacin = "";
+                    string strijelacGost = "";
+
+                    if (EnumeratorDomacini.Current != null)
+                    {
+                        strijelacDomacin = EnumeratorDomacini.Current;
+                    }
+                    if (EnumeratorGosti.Current != null)
+                    {
+                        strijelacGost = EnumeratorGosti.Current;
+                    }
+
+                    Console.WriteLine(String.Format("| {0, -80} | {1, -80} | ", strijelacDomacin, strijelacGost));
+
                 }
 
-                if (zapis.strijelacGost != null)
-                {
-                    tempStrijelacGost = zapis.strijelacGost;
-                }
-
-                Console.WriteLine(String.Format("| {0, -35}   {1, -35}  | {2, -35}   {3, -35}  |", GoloviDomacin, tempStrijelacDomacin, GoloviGost, tempStrijelacGost));
             }
+
+            // prvo gol 
+            //Console.WriteLine(String.Format("| {0, -35}   {1, -35}   {2, -35} |  {3, -35} {4, -35} {5, -35}  |", GoloviDomacin, tempStrijelacDomacin, OstaloDomacin, GoloviGost, tempStrijelacGost, OstaloGost));
+
+            Console.WriteLine();
+            Console.WriteLine(String.Format("| {0, -80} | {1, -80} | ", OstaloDomacin, OstaloGost));
+            Console.WriteLine(new string('-', SIRINA_TABLICE));
         }
     }
 }

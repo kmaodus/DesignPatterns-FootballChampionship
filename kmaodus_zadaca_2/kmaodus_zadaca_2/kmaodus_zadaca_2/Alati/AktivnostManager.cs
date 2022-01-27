@@ -1,8 +1,10 @@
 ﻿using kmaodus_zadaca_2.Builder;
 using kmaodus_zadaca_2.Entiteti;
 using kmaodus_zadaca_2.FactoryMethod;
+using kmaodus_zadaca_2.Observer;
 using kmaodus_zadaca_2.Singleton;
 using kmaodus_zadaca_2_ucitavanje.Facade;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -56,9 +58,40 @@ namespace kmaodus_zadaca_2.Alati
         {
             Prvenstvo.PregledRezultataUtakmicaZaKlubNakonKola(klub, kolo);
         }
-        public void Aktivnost5(int kolo, string klubDomacin, string klubGost, int sekunde) 
+        public void Aktivnost5(int kolo, string klub1, string klub2, int sekunde)
         {
-            Prvenstvo.PrikaziSemaforUtakmice();
+            UtakmicaPotpuno trazenaUtakmicaPotpuno = null;
+
+            foreach (var utakmicaPotpuno in Prvenstvo.DohvatiUtakmicePotpuno())
+            {
+
+                if (utakmicaPotpuno.Utakmica.Kolo == kolo)
+                {
+                    if (utakmicaPotpuno.KlubDomacin.ID_Klub == klub1 &&
+                        utakmicaPotpuno.KlubGost.ID_Klub == klub2)
+                    {
+                        trazenaUtakmicaPotpuno = utakmicaPotpuno;
+                        break;
+                    }
+                    else if (utakmicaPotpuno.KlubDomacin.ID_Klub == klub2 &&
+                             utakmicaPotpuno.KlubGost.ID_Klub == klub1)
+                    {
+                        trazenaUtakmicaPotpuno = utakmicaPotpuno;
+                        break;
+                    }
+                }
+            }
+
+            if (trazenaUtakmicaPotpuno != null)
+            {
+                trazenaUtakmicaPotpuno.Attach(new Semafor());
+                trazenaUtakmicaPotpuno.PrikaziLiveUtakmicu(sekunde);
+            }
+            else
+            {
+                Zapisnik.Ispis(Zapisnik.UPOZORENJE, $"\n[UPOZORENJE] Nije pronadena trazena utakmica..");
+            }
+
         }
 
 
@@ -138,17 +171,24 @@ namespace kmaodus_zadaca_2.Alati
             string uneseniKlub = "";
             int brojKola;
 
+            string klub1 = "";
+            string klub2 = "";
+            int sekunda = 2;
+
             var poljeZnakova = unos.Trim().ToCharArray();
             var splitZnakova = unos.Split(' ');
             // R SP [kolo]
             // R D [kolo]
 
-            //if (true)
-            //{
-
-            //}else
-
-            if (splitZnakova.Length == 2)
+            if (splitZnakova.Length == 5)
+            {
+                oznaka = poljeZnakova[0];
+                brojKola = int.Parse(splitZnakova[1]);
+                klub1 = splitZnakova[2];
+                klub2 = splitZnakova[3];
+                sekunda = int.Parse(splitZnakova[4]);
+            }
+            else if (splitZnakova.Length == 2)
             {
                 oznaka = poljeZnakova[0];
                 uneseniKlub = splitZnakova[1];
@@ -194,7 +234,14 @@ namespace kmaodus_zadaca_2.Alati
                     Aktivnost4(uneseniKlub, brojKola);
                     break;
                 case 'D': // D 3 O H 2 
-                    //Aktivnost5();
+                    if (RegexHelper.ProvjeriAktivnost5(unos))
+                    {
+                        Aktivnost5(brojKola, klub1, klub2, sekunda);
+                    }
+                    else
+                    {
+                        Zapisnik.Ispis(Zapisnik.UPOZORENJE, $"\n[UPOZORENJE] Kriva naredba! Pokušajte ponovno..");
+                    }
                     break;
                 default:
                     Zapisnik.Ispis(Zapisnik.GRESKA, $"\n[GRESKA] Neispravan unos, provjerite upisanu oznaku!");

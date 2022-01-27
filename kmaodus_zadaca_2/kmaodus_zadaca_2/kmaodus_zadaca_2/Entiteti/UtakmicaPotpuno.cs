@@ -1,6 +1,7 @@
 ﻿using kmaodus_zadaca_2.Entiteti.Enums;
 using kmaodus_zadaca_2.Observer;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace kmaodus_zadaca_2.Entiteti
 {
@@ -40,7 +41,7 @@ namespace kmaodus_zadaca_2.Entiteti
             int ukupanBrojGolova = 0;
             foreach (var dogadaj in Dogadaji)
             {
-                if (dogadaj.Klub == Utakmica.ID_Gost && dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_Igre || dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_KaznenogUdarca)
+                if (dogadaj.Klub == Utakmica.ID_Gost && (dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_Igre || dogadaj.Vrsta == (int)OznakeDogadaja.Gol_Iz_KaznenogUdarca))
                 {
                     ukupanBrojGolova++;
                 }
@@ -186,11 +187,12 @@ namespace kmaodus_zadaca_2.Entiteti
             }
         }
 
-        public void PrikaziLiveUtakmicu() 
+        public void PrikaziLiveUtakmicu(int sekunde = 1) 
         {
             foreach (var dogadaj in Dogadaji)
             {
                 Notify(dogadaj);
+                Thread.Sleep(1000*sekunde);
             }
         }
     }

@@ -96,7 +96,7 @@ namespace kmaodus_zadaca_2
                 Zapisnik.Ispis(Zapisnik.INFO, new string('=', 120));
                 Console.WriteLine("Odaberite opciju unosa ili ugasite program: ");
 
-                odabir = Console.ReadLine().ToString();//.ToUpper();
+                odabir = Console.ReadLine().ToString().ToUpper();
                 if (String.IsNullOrEmpty(odabir))
                 {
                     Zapisnik.Ispis(Zapisnik.UPOZORENJE, $"\n[UPOZORENJE] Kriva naredba! Pokušajte ponovno..");
